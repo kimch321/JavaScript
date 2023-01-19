@@ -31,5 +31,151 @@
       a = 10; // 위에서 선언한 변수를 다시 재선언함 오류 발생!!
       document.write("a = ", a, "<br>"); // a = 10
     </script>
+    <h2>자료형</h2>
+    <p>
+      자바스크립트 자료형에는 Number, String, Bollean, Null, Undefined, BigInt,
+      객체형등이 있음.
+    </p>
+    <h2>숫자형</h2>
+    <p>Number형으로 정수, 실수 등을 다룰 수 있음.</p>
+    <p>BigInt형은 기존 정수보다 더 많은 범위의 수를 다룰 수 있음.</p>
+    <p>
+      한편, Number형에는 일반적인 숫자외에 추가적으로 NaN(Not a Number),
+      Infinity/-Infinity 등을 사용할 수 있음
+    </p>
+    <p>따라서, 말도 안되는 연산에도 오류는 발생하지 않음</p>
+
+    <script>
+      document.write("1 + 2 = ", 1 + 2, "<br>");
+      document.write("10 / 3 = ", 10 / 3, "<br>");
+      document.write("10 % 3 = ", 10 % 3, "<br>");
+
+      x = 10;
+      y = 3; // 변수는 정수형
+      document.write("x / y = ", x / y, "<br>");
+
+      y = 3.14; // 변수는 실수형
+      r = 5;
+      document.write("3.14 x 5^2 = ", y * r * r, "<br>");
+
+      y = 1;
+      document.write("1 ÷ 0 = ", y / 0, "<br>");
+
+      y = -1;
+      document.write("-1 ÷ 0 = ", y / 0, "<br>");
+
+      y = "hello";
+      document.write("hello ÷ 0 = ", y / 0, "<br>");
+
+      y = String(123456789012345678901234567890123456789012345678901234567890);
+      document.write("완전 큰 숫자 = ", y, "<br>");
+      document.write(typeof y, `<br>`);
+
+      //y = BigInt('123456781231231231231231231231231231231231231231231231231231231901234567890123456789012345123123123123123123123136789012345678901234567890');
+      y =
+        123456781231231231231231231231231231231231231231231231231231231901234567890123456789012345123123123123123123123136789012345678901234567890n;
+      document.write("완전 큰 숫자 = ", y, "<br>");
+    </script>
+
+    <h2>문자형</h2>
+    <p>단일문자나 단일문자가 여러개 모인 문자열을 다룰때 사용</p>
+    <p>문자열을 정의할때는 '',"",`` 등을 이용함</p>
+
+    <script>
+      let say1 = "hello";
+      let say2 = "hello";
+      let say3 = "hello";
+
+      document.write(say1, say2, say3, "<br>");
+
+      // 문자열들에 + 를 사용하면 문자열을 모두 연결해서 하나의 문자열로 출력할 수 있음
+      document.write(say1 + " " + say2 + " " + say3, "<br>");
+
+      // 백틱(`)을 이용해서 여러줄 문자열도 정의 가능
+      let koreasong = `동해물과\n백두산이\n마르고닳도록`;
+      // 줄바꿈 문자 \n이 작동하지 않음
+      document.write(koreasong, "<br>");
+
+      koreasong = `동해물과<br>백두산이<br>마르고닳도록`;
+      // 줄바꿈 문자로 <br> 사용
+      document.write(koreasong, "<br>");
+
+      koreasong = `동해물과
+백두산이
+마르고닳도록`;
+      alert(koreasong, "<br>");
+
+      // 템플릿 리터럴 : 주로 문자열과 변수를 합쳐서 출력시 유용
+      a = 10;
+      b = 20;
+      document.write(`a + b = ${a + b}<br>`);
+      document.write(`${a} + ${b} = ${a + b}<br>`);
+
+      // 문자char는 문자열string의 부분집합임
+      // 문자열에서 개별 문자를 추출해서 어떤 작업을 할 수 있음
+      // 문자열 선택 연산자
+      say = "Hello, World";
+      document.write(`say[0] = ${say[0]},
+                    say[1] = ${say[1]}, say[2] = ${say[2]}<br>`);
+      // ex) 주민번호에서 성별코드 추출
+      let jumin = `123456-2368549`;
+      document.write(`님의 성별은 ${jumin[7]}입니다<br>`);
+    </script>
+    <h2>Bollean형</h2>
+    <p>논리형의 일종으로 true, false 등의 논리값만 존재</p>
+    <p>주로 긍정(true), 부정(false)을 나타내는 값에 사용</p>
+    <script>
+      let isMarried = false;
+
+      document.write(`결혼여부 : ${isMarried}<br>`);
+
+      let isGreated = 10 < 5;
+      document.write(`10 < 5 : ${isGreated}<br>`);
+    </script>
+
+    <h2>Null</h2>
+    <p>null 값만 다루는 자료형</p>
+    <p>
+      null은 존재하지 않는 값, 비어 있는 값, 알 수 없는 값을 나타내는데 사용
+    </p>
+    <script>
+      let name = null; // 변수는 현재 선언되지 않은 상태
+      document.write(`이름 : ${name}<br>`);
+    </script>
+    <h2>undefined</h2>
+    <p>undefined 값만 다루는 자료형</p>
+    <p>
+      undefined는 변수는 선언했지만, 값이 할당되지 않은 상태를 나타내는데 사용
+    </p>
+    <script>
+      name = undefined; // 변수는 현재 선언된 상태
+      document.write(`이름 : ${name}<br>`);
+    </script>
+    <h2>객체형</h2>
+    <p>
+      String형, Number형, Boolean형은 변수에 단 하나의 값만 표현 가능 -
+      원시primitive 자료형
+    </p>
+    <p>하지만, 복잡한 프로그램의 경우 이것으로는 다소 부족.</p>
+    <p>
+      데이터의 집합이나 개체를 표현하기 위해 객체 자료형이 도입 - 변수 하나에
+      여러 종류의 데이터를 담을 수 있음.
+    </p>
+    <script>
+      // ex) 성적 처리프로그램 v1
+      // 이름, 국어, 영어, 수학을 이용해서
+      // 총점, 평균을 계산한 뒤 결과 출력
+      name = `홍길동`;
+      const korean = 99;
+      const english = 98;
+      const mathematics = 99;
+      const totalScore = korean + english + mathematics;
+      const subjects = [korean, english, mathematics];
+      const average = totalScore / subjects.length;
+      document.write(`<h1>성적처리 v1</h1>`);
+      document.write(`이름 : ${name}<br>`);
+      document.write(`총점 : ${totalScore}<br>`);
+      document.write(`평균 : ${average}<br>`);
+    </script>
   </body>
 </html>

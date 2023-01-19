@@ -67,7 +67,9 @@
       y = "hello";
       document.write("hello ÷ 0 = ", y / 0, "<br>");
 
-      y = String(123456789012345678901234567890123456789012345678901234567890);
+      y = String(
+        "123456789012345678901234567890123456789012345678901234567890"
+      );
       document.write("완전 큰 숫자 = ", y, "<br>");
       document.write(typeof y, `<br>`);
 
@@ -139,7 +141,7 @@
       null은 존재하지 않는 값, 비어 있는 값, 알 수 없는 값을 나타내는데 사용
     </p>
     <script>
-      let name = null; // 변수는 현재 선언되지 않은 상태
+      let name = null; // 변수는 현재 선언되었고, null값이 할당되었다.
       document.write(`이름 : ${name}<br>`);
     </script>
     <h2>undefined</h2>
@@ -148,7 +150,7 @@
       undefined는 변수는 선언했지만, 값이 할당되지 않은 상태를 나타내는데 사용
     </p>
     <script>
-      name = undefined; // 변수는 현재 선언된 상태
+      name = undefined; // 변수는 현재 선언되었고, 값이 할당되지 않았다.
       document.write(`이름 : ${name}<br>`);
     </script>
     <h2>객체형</h2>

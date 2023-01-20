@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      document.write(`11. 12.<br>`);
+      let name = prompt(`이름은 무엇인가요?`);
+      let weight = Number(prompt(`몸무게는 몇인가요?`));
+      let birth = prompt(`주민번호 앞여섯자리를 알려주세요`);
+      let birth1 = 2023 - ("19" + `${birth[0]}` + `${birth[1]}`);
+      let birth2 = Number(
+        `${birth[2]}` + `${birth[3]}` + `${birth[4]}` + `${birth[5]}`
+      );
+      let age = 120 > birth2 ? birth1 + 1 : birth1;
+      let result = `이름 : ${name} <br>`;
+      result += `몸무게 : ${weight} <br>`;
+      result += `나이 : ${age}<br>`;
+      document.write(result);
+
+      document.write(`13.<br>`);
+      let num1 = 7;
+      let num2 = 1;
+      let cal = num1 * num2;
+      let result2 = `7 x 1 = ` + cal + `<br>`;
+      num2++;
+      cal = num1 * num2;
+
+      result2 += `7 x 2 = ` + cal + `<br>`;
+      num2++;
+      cal = num1 * num2;
+      result2 += `7 x 3 = ` + cal + `<br>`;
+      num2++;
+      cal = num1 * num2;
+      result2 += `7 x 4 = ` + cal + `<br>`;
+      num2++;
+      cal = num1 * num2;
+      result2 += `7 x 5 = ` + cal + `<br>`;
+      num2++;
+      cal = num1 * num2;
+      result2 += `7 x 6 = ` + cal + `<br>`;
+      num2++;
+      cal = num1 * num2;
+      result2 += `7 x 7 = ` + cal + `<br>`;
+      num2++;
+      cal = num1 * num2;
+      result2 += `7 x 8 = ` + cal + `<br>`;
+      num2++;
+      cal = num1 * num2;
+      result2 += `7 x 9 = ` + cal + `<br>`;
+
+      document.write(result2);
+
+      document.write(`14.`,`<br>`);
+      let inputTime = 1234567890;
+      let daySec = 86400;
+      let day1 = inputTime/daySec;
+      let inputTime2 = 12345;
+      let dayMinute = 60;
+      let day2 = inputTime2/dayMinute;
+      let inputTime3 = 98765;
+      let dayHour = 3600;
+      let day3 = inputTime3/dayHour;
+      let result3 = `${inputTime}초는 약 ${parseInt(day1)}일 이다.<br>`;
+      result3 += `${inputTime2}초는 약 ${parseInt(day2)}분 이다.<br>`;
+      result3 += `${inputTime3}초는 약 ${parseInt(day3)}시간 이다.<br>`;
+      document.write(result3,`<br>`);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  document.write(`15.`,`<br>`);
+  let bookname = `누구나 알기 쉬운 자바 : 입문편`;
+  let author = `카와바 타케시`;
+  let translator = `하진일`;
+  let publisher = `혜지원`;
+  let pubdate = `2014년 06일`;
+  let price = 25000;
+  let dispct = 10;
+  let saleprice = price * (1 - (dispct / 100));
+  let mileage = saleprice * (dispct / 100);
+
+  let result = `도서명 : ${bookname} <br>`;
+  result += `저자 : ${author} <br>`;
+  result += `역자 : ${translator} <br>`;
+  result += `출판사 : ${publisher} <br>`;
+  result += `출간일 : ${pubdate} <br>`;
+  result += `정가 : ${author} <br>`;
+  result += `판매가 : ${saleprice} <br>`;
+  result += `할인율 : ${dispct} <br>`;
+  result += `적립금 : ${mileage} <br>`;
+  document.write(`${result}`);
+  document.write(`<hr>`);
+
+  document.write(`16.`,`<br>`);
+  let sale = Number(prompt(`판매가격을 입력하세요.`));
+  let input = Number(prompt('고객에게 받은 금액을 입력하세요.')); //72320
+  let charge = input - sale;
+  let fiftyThousand = charge%50000;                          //22320
+  let tenThousand = fiftyThousand%10000;                    //2320
+  let fiveThousand = tenThousand%5000;                      //2320
+  let oneThousand = fiveThousand%1000;                      //320
+  let fiveHundred = oneThousand%500;                        //320
+  let oneHundred = fiveHundred%100;                         //20
+  let fifty = oneHundred%50;                                //20
+  let ten = fifty;                                          //0
+  document.write(
+          `50000원 권 : `,Math.floor(`${charge}`/50000),`장`,'<br>',
+          `10000원 권 : `,Math.floor(`${fiftyThousand}`/10000),`장`,'<br>',
+          `5000원 권 : `,Math.floor(`${tenThousand}`/5000),`장`,'<br>',
+          `1000원 권 : `,Math.floor(`${fiveThousand}`/1000),`장`,'<br>',
+          `500원 : `,Math.floor(`${oneThousand}`/500),`개`,'<br>',
+          `100원 : `,Math.floor(`${fiveHundred}`/100),`개`,'<br>',
+          `50원 : `,Math.floor(`${fifty}`/50),`개`,'<br>',
+          `10원 : `,Math.floor(`${ten}`/10),`개`,'<br>',
+  );
+
+
+</script>
+</body>
+</html>

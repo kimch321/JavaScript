@@ -34,7 +34,9 @@
     <script>
       let x = 10;
       let y = 3;
-      document.write(`10 / 3 = ${x / y}, 10 % 3 = ${x % y}, 10^3 = ${x ** y}<br>`);
+      document.write(
+        `10 / 3 = ${x / y}, 10 % 3 = ${x % y}, 10^3 = ${x ** y}<br>`
+      );
 
       // 증감연산자의 의미 : a++ -> a = a + 1
       // 증감연산자의 위치에 따라 전치/후치로 나뉨
@@ -50,22 +52,167 @@
     </p>
     <script>
       document.write(` 1 + 2 = `, 1 + 2, `<br>`);
-      document.write(` "1" + 2 = `, '1' + 2, `<br>`);
-      document.write(` "1" + "2" = `, '1' + '2', `<br>`);
+      document.write(` "1" + 2 = `, "1" + 2, `<br>`);
+      document.write(` "1" + "2" = `, "1" + "2", `<br>`);
       // 긍정, 부정을 나타내는 bollean 형 값을 숫자로 변환하면 true = 1, false = 0.
-      document.write(` 1 + true = `, 1 + true, `<br>`);                   // 2
-      document.write(` false + true = `, false + true, `<br>`);           // 1
-      document.write(` false + null = `, false + null, `<br>`);           // 0
+      document.write(` 1 + true = `, 1 + true, `<br>`); // 2
+      document.write(` false + true = `, false + true, `<br>`); // 1
+      document.write(` false + null = `, false + null, `<br>`); // 0
       document.write(` false + undefined = `, false + undefined, `<br>`); // 0 / NaN
     </script>
     <p>
       복합 할당연산자 : 할당 연산자와 산술 연산자를 혼합해서 표현식을 간단하게
       작성하는데 사용
     </p>
+    <script>
+      x = 1;
+      x = x + 1;
+      document.write(` x = x + 1 : `, x, `<br>`);
 
-    좌항과 우항의 피연산자를 비교해서 큰지 작은지 같은지 알아보는 연산자
-    결과값은 true 나 false로 반환 if ~ eles의 sytantic sugar 조건식 ? 참일때의
-    값 : 거짓일때의 값 boolean 표현식에 대한 논리합OR(||) 또는 논리곱AND(&&)
-    또는 부정NOT(!) 연산을 수행하는 기호
+      x = 1;
+      x += 1; // syntactic sugar. 프로그래밍 코드를 좀더 sweet하게 사용할 수 있도록 도와주는 문법.
+      document.write(` x += 1 : `, x, `<br>`);
+    </script>
+    <h2>비교연산자</h2>
+    <p>좌항과 우항의 피연산자를 비교해서 큰지 작은지 같은지 알아보는 연산자</p>
+    <p>
+      결과값은 true 나 false로 반환 if ~ eles의 sytantic sugar 조건식 ? 참일때의
+      값 : 거짓일때의 값 boolean 표현식에 대한 논리합OR(||) 또는 논리곱AND(&&)
+      또는 부정NOT(!) 연산을 수행하는 기호
+    </p>
+    <script>
+      x = 10;
+      y = 5;
+
+      document.write(`10 > 5 : `, x > y, `<br>`);
+      document.write(`10 == 5 : `, x == y, `<br>`); // 값의 동일여부 비교
+      document.write(`10 === 5 : `, x === y, `<br>`); // 값, 타입의 동일여부 비교
+
+      y = 10;
+      document.write(`10 == 10 : `, x == y, `<br>`);
+      document.write(`10 === 10 : `, x === y, `<br>`);
+
+      y = 10n;
+      document.write("10 == 10n : ", x == y, `<br>`);
+      document.write("10 === 10n : ", x === y, `<br>`);
+
+      y = `10`;
+      document.write(` 10 == '10' `, x == y, `<br>`);
+      // 자바스크립트에서 == 연산자로 비교시 변수들의 자료형을 일치시키는 암묵적 형변환 발생!
+      // (자바스크립트만의 특징.) use strict를 써도 달라지지 않음.
+      // 비교연산자는 경우에 따라 수많은 부작용 양산 : === 추천!
+      document.write(` 10 === '10' `, x === y, `<br>`);
+    </script>
+
+    <h2>삼항연산자</h2>
+    <p>조건문 if ~ else의 sytantic sugar</p>
+    <p>변수 = 조건식 ? 참일때의 값 : 거짓일때의 값</p>
+    <script>
+      // 평균점수가 60이상이면 '합격', 아니면 '불합격'이라 출력
+      let jumsu = 40;
+      let result = jumsu >= 60 ? `합격` : `불합격`;
+      document.write(` 귀하께선 이번 시험에 `, result, "하셨습니다.", `<br>`);
+    </script>
+
+    <h2>논리연산자</h2>
+    <p>
+      boolean 표현식에 대한 논리합OR(||) 또는 논리곱AND(&&) 또는 부정NOT(!)
+      연산을 수행하는 기호
+    </p>
+    <script>
+      document.write("true OR false : ", true || false, "<br>");
+      document.write("true AND false : ", true && false, "<br>");
+      document.write("1(true) AND 0(false) : ", 1 && 0, "<br>");
+    </script>
+    <script>
+      // FF - F, FT - T, TF - T, TT - T
+      // val = val1 || val2 || val3 의 경우
+      // 연산자 OR는 첫번째 truthy를 출력함 - short circuit
+      document.write(`1 || 0 : `, 1 || 0, `<br>`);
+      document.write(`null || 1 : `, null || 1, `<br>`);
+      document.write(`undefined || 1 : `, undefined || 1, `<br>`);
+      document.write(
+        `null || 1 || undefined : `,
+        null || 1 || undefined,
+        `<br>`
+      );
+      // FF - F, FT - F, TF - F, TT - T
+      // val = val1 && val2 && val3 의 경우
+      // 연산자 AND는 첫번째 falsy를 출력함
+      document.write(`1 && 0 : `, 1 && 0, `<br>`);
+      document.write(`null && 1 : `, null && 1, `<br>`);
+      document.write(`undefined && 1 : `, undefined && 1, `<br>`);
+      document.write(
+        `null && 1 && undefined : `,
+        null && 1 && undefined,
+        `<br>`
+      ); // 결과가 null이라는 것에 주의
+    </script>
+    <script>
+      document.write(
+        `null || 1 || undefined : `,
+        null || 1 || undefined,
+        `<br>`
+      );
+      document.write(
+        `null && 1 && undefined : `,
+        null && 1 && undefined,
+        `<br>`
+      );
+    </script>
+    <h2>변수의 자료형 알아보기</h2>
+    <p>typeof 연산자를 이용하면 변수나 값의 자료형을 출력함</p>
+    <script>
+      // typeof(10)이렇게 적으면 함수처럼 보일수 있지만 연산자라는 점에 주의
+      document.write(`숫자 10의 자료형 : `, typeof 10, `<br>`);
+      document.write(`숫자 abc의 자료형 : `, typeof `abc`, `<br>`);
+      document.write(`숫자 10n의 자료형 : `, typeof 10n, `<br>`);
+      document.write(`숫자 undefined의 자료형 : `, typeof undefined, `<br>`);
+    </script>
+    <h2>자료형 변환</h2>
+    <p>
+      함수와 연산자에 전달되는 값은 표현식에 적합하게 적절한 자료형으로
+      변환됨(묵시적 형변환)
+    </p>
+    <p>
+      하지만, 상황에 따라 의도를 갖고 원하는 자료형으로 직접 변환해야 하는
+      경우도 있음 (명시적 형변환)
+    </p>
+    <p>어떤 값을 숫자형으로 변환하고 싶다면 Number() 사용</p>
+    <p>어떤 값을 문자형으로 변환하고 싶다면 String() 사용</p>
+    <p>어떤 값을 불리언형으로 변환하고 싶다면 Boolean() 사용</p>
   </body>
+  <script>
+    // 나이 계산 v1 : 현재년도 - 생년연도
+    // let birthyear = prompt(`생년연도는?`);
+    // let age = 2023 - birthyear;
+    //
+    // document.write(`생년연도 : `, age , `<br>`);
+  </script>
+  <script>
+    // ex) 성적 처리프로그램 v2
+    // 이름, 국어, 영어, 수학을 입력받아
+    // 총점, 평균, 학점을 계산한 뒤 결과 출력
+    // 단, 학점은 수우미양가 중 하나가 출력되어야 함
+    let name = prompt(`이름은 무엇인가요?`);
+    let korean = Number(prompt(`국어점수는 몇점인가요?`));
+    let english = Number(prompt(`영어점수는 몇점인가요?`));
+    let mathematics = Number((prompt(`수학점수는 몇점인가요?`));
+    // korean = Number(korean);
+    // english = Number(english);
+    // mathematics = Number(mathematics);
+    let totalScore = korean + english + mathematics + 0;
+    let subjects = [korean, english, mathematics];
+    let average = totalScore / subjects.length;
+    let grade = (average >= 90) ? `수` :
+            (average >= 80) ? `우` :
+                    (average >= 70) ? `미` :
+                            (average >= 60) ? `양` :
+                                    `가`;
+    document.write(`<h1>성적처리 v2</h1>`);
+    document.write(`이름 : ${name}<br>`);
+    document.write(`총점 : ${totalScore}<br>`);
+    document.write(`평균 : ${average}<br>`);
+    document.write(`학점 : ${grade}<br>`);
+  </script>
 </html>

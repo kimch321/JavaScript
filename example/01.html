@@ -36,7 +36,7 @@
   let change = input - total;
   document.write(`[ 음식나라 ]<br>`);
   document.write(`---------------------<br>`);
-  document.write(`소주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${sujunum}&nbsp;&nbsp;${suju}<br>`);
+  document.write(`소주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${sujunum}&nbsp;&nbsp;${suju*sujunum}<br>`);
   document.write(`너나치킨&nbsp;&nbsp;${chickennum}&nbsp;${chicken}<br>`);
   document.write(`---------------------<br>`);
   document.write(`과세합계&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${sum}<br>`);
@@ -56,8 +56,6 @@
   let result = 11;
   result /=2;
   document.write(`다. `, 7 % 3,`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`,`라. `,result,`<br><hr>`);
-
-  document.write(+undefined);
 </script>
 </body>
 </html>

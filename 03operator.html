@@ -194,25 +194,66 @@
     // 이름, 국어, 영어, 수학을 입력받아
     // 총점, 평균, 학점을 계산한 뒤 결과 출력
     // 단, 학점은 수우미양가 중 하나가 출력되어야 함
+    // let name = prompt(`이름은 무엇인가요?`);
+    // let korean = Number(prompt(`국어점수는 몇점인가요?`));
+    // let english = Number(prompt(`영어점수는 몇점인가요?`));
+    // let mathematics = Number(prompt(`수학점수는 몇점인가요?`));
+    // // korean = Number(korean);
+    // // english = Number(english);
+    // // mathematics = Number(mathematics);
+    // let totalScore = korean + english + mathematics;
+    // let subjects = [korean, english, mathematics];
+    // let average = totalScore / subjects.length;
+    // let grade = (average >= 90) ? `수` :
+    //         (average >= 80) ? `우` :
+    //                 (average >= 70) ? `미` :
+    //                         (average >= 60) ? `양` :
+    //                                 `가`;
+    // document.write(`<h1>성적처리 v2</h1>`);
+    // document.write(`이름 : ${name}<br>`);
+    // document.write(`총점 : ${totalScore}<br>`);
+    // document.write(`평균 : ${average}<br>`);
+    // document.write(`학점 : ${grade}<br>`);
+  </script>
+  <script>
+    // ex) 성적 처리프로그램 v2
+    // 이름, 국어, 영어, 수학을 입력받아
+    // 총점, 평균, 학점을 계산한 뒤 결과 출력
+    // 단, 학점은 수우미양가 중 하나가 출력되어야 함
     let name = prompt(`이름은 무엇인가요?`);
-    let korean = Number(prompt(`국어점수는 몇점인가요?`));
-    let english = Number(prompt(`영어점수는 몇점인가요?`));
-    let mathematics = Number((prompt(`수학점수는 몇점인가요?`));
+    let korean = prompt(`국어점수는 몇점인가요?`);
+    let english = prompt(`영어점수는 몇점인가요?`);
+    let mathematics = prompt(`수학점수는 몇점인가요?`);
     // korean = Number(korean);
     // english = Number(english);
     // mathematics = Number(mathematics);
-    let totalScore = korean + english + mathematics + 0;
+    // 숫자가 아닌 값을 숫자형으로 묵시적으로 변환
+    // + 단항 연산자를 사용
+    let totalScore = -korean + -english + -mathematics;
     let subjects = [korean, english, mathematics];
     let average = totalScore / subjects.length;
-    let grade = (average >= 90) ? `수` :
-            (average >= 80) ? `우` :
-                    (average >= 70) ? `미` :
-                            (average >= 60) ? `양` :
-                                    `가`;
-    document.write(`<h1>성적처리 v2</h1>`);
+    let grade =
+      average >= 90
+        ? `수`
+        : average >= 80
+        ? `우`
+        : average >= 70
+        ? `미`
+        : average >= 60
+        ? `양`
+        : `가`;
+    document.write(`<h1>성적처리 v2b</h1>`);
     document.write(`이름 : ${name}<br>`);
     document.write(`총점 : ${totalScore}<br>`);
     document.write(`평균 : ${average}<br>`);
     document.write(`학점 : ${grade}<br>`);
+
+    // 단항연산자를 이용한 묵시적 형변환 예
+    console.log(+``);
+    console.log(+null);
+    console.log(+false);
+    console.log(+true);
+    console.log(+undefined);
+    console.log(+[]);
   </script>
 </html>

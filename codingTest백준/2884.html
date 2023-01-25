@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let H = 10;
+  let M = 10;
+  switch (M-45 > 0) {
+    case 0:
+      H = H-1;
+      M = 60 + (M-45);
+      break;
+    case 1:
+      M = M-45;
+      break;
+  }
+  console.log(`${H} ${M}`);
+</script>
+</body>
+</html>

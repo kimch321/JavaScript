@@ -6,18 +6,13 @@
 </head>
 <body>
 <script>
-    let time = "09:53:12";
-    let hour = Number(time[0] + time[1]);
-    let result = "";
-    switch (true) {
-        case (hour < 12):
-            result = `오전입니다!`;
-            break;
-        case (hour >= 12):
-            result = "오후입니다!";
-            break;
+    let result = '';
+    for (let i = 1; i <= 100; ++i) {
+        if ( i % 2 == 0) { // 짝수라면
+            result += i; // 어째선지 이러면 문자열이 된다., 숫자를 입력해서 문자열을 받았다. 좋지 않은 것 같다.
+            console.log(typeof result);
+        }
     }
-    console.log(result);
 </script>
 </body>
 </html>

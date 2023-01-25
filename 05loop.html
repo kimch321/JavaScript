@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>loop</title>
+  </head>
+  <body>
+    <h1>자바스크립트 반복문</h1>
+    <h2>개요</h2>
+    <p>조건을 만족하는 동안 코드를 반복적으로 수행하는 문장</p>
+    <p>
+      자바스크립트에서는 기본적으로 3가지 반복문(for, while, do-while)이
+      지원되고, 그외 for-loop, for-in과 ES6에서 추가된 for-of등이 있음
+    </p>
+    <h2>for</h2>
+    <p>조건식이 참 일 동안 코드블록을 반복적으로 실행</p>
+    <img src="img/for 문법.png" height="164" width="960" />
+    <br />
+    <img src="img/for 순서도.png" width="960" />
+    <br />
+    <script>
+      // 1 ~ 10 까지의 정수 출력 v1
+      console.log("1");
+      console.log("2");
+      console.log("3");
+      console.log("4");
+      console.log("5");
+      console.log("6");
+      console.log("7");
+      console.log("8");
+      console.log("9");
+      console.log("10");
+      console.log("---");
+    </script>
+    <script>
+      // 1 ~ 10 까지의 정수 출력 v2
+      for (let i = 1; i <= 10; i++) {
+        console.log(i);
+      }
+      console.log("---");
+    </script>
+    <script>
+      // 1 ~ 100까지의 정수 중 짝수 출력
+      for (let i = 2; i <= 100; i = i + 2) {
+        console.log(i);
+      }
+      console.log("---");
+      // 1 ~ 100까지의 정수 중 짝수 출력v2
+      for (let i = 2; i <= 100; i += 2) {
+        console.log(i);
+      }
+      console.log("---");
+      // 1 ~ 100까지의 정수 중 짝수 출력v3
+      let result = ''; // result를 스트링으로 정의했더니, 더해지는 값들이 스트링으로 암시적 형변환되었다.
+      for (let i = 1; i <= 100; ++i) {
+        if ( i % 2 == 0) { // 짝수라면
+          result += i;
+          console.log(typeof result);
+        }
+      }
+      console.log(result);
+      console.log("---");
+    </script>
+    <script>
+      // 1 ~ 100까지의 정수의 총합 출력
+      let result2 = null; //result를 null로 정했더니, 더해지는 값들이 더해지는 값의 타입으로 암시적 형변환되었다.
+      for (let int = 1; int <= 100; int++) {
+        result2 += int;
+        console.log(typeof int);
+      }
+      console.log(result2);
+      console.log("---");
+    </script>
+    <script>
+      // 1 ~ 100까지의 정수의 총합 출력v2 - 가우스 덧셈
+      // ((시작숫자 + 종료숫자) * (종료숫자 - 시작숫자 +1))/2
+      result = 100*(100+1)/2;
+      console.log(result);
+      if (result2=result){
+        console.log('같습니다.')
+      } else {
+        console.log('다릅니다.')
+      }
+      // 1 ~ 101까지의 정수의 총합
+      result = (101+1)*(101 - 1 + 1)/2
+      console.log(result);
+      console.log("---");
+    </script>
+    <script>
+      // 10 ~ 1까지의 정수 출력
+      result = ``;
+      for ( let i = 10; i > 0; i--) {
+        console.log(i);
+      }
+      for ( let i = 10; i > 0; i--) {
+        result += i;
+      }
+      console.log(result);
+      console.log("---");
+    </script>
+  </body>
+</html>

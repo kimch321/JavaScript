@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let time = "09:53:12";
+    let hour = Number(time[0] + time[1]);
+    let result = "";
+    switch (true) {
+        case (hour < 12):
+            result = `오전입니다!`;
+            break;
+        case (hour >= 12):
+            result = "오후입니다!";
+            break;
+    }
+    console.log(result);
+</script>
+</body>
+</html>

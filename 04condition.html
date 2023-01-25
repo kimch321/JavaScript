@@ -24,6 +24,7 @@
     <p>if (조건식) {</p>
     <p>참일때 실행할 명령어(들)</p>
     <p>}</p>
+    <img src="img/if문 순서도.png" height="362" width="429" />
     <script>
       // 평균 점수가 60점 이상이면, '시험 합격!!'을 출력
       let avg = 68.5;
@@ -59,6 +60,7 @@
     <p>} else {</p>
     <p>거짓일 때 실행할 명령어(들)</p>
     <p>}</p>
+    <img src="img/if else 순서도.png" height="361" width="393" />
     <script>
       // 평균 점수가 60점 이상이면, '시험 합격!!'을 출력
       avg = 59.5;
@@ -147,7 +149,7 @@
       // else안에 if를 넣어본다면.
       if (year % 4 == 0) {
         if (year % 100 != 0) {
-          console.log(`평년입니다.`);
+          console.log(`윤년입니다.`);
         } else {
           if (year % 400 == 0) {
             console.log(`윤년입니다.`);
@@ -229,8 +231,9 @@
       } else if ("") {
         result = "참입니다. <br>";
       }
-      document.write(result);
+      console.log(result);
     </script>
+    <h2>switch</h2>
     <p>다중 조건 if문을 가독성 있게 작성한 조건문</p>
     <p>
       switch의 표현식을 평가하여 그 값의 일치여부에 따라 case문 아래의 코드
@@ -243,7 +246,195 @@
       단, 표현식의 평가값과 일치하는 case문이 실행되더라도 break문이 없으면,
       switch문이 중단되지 않고 나머지 case문을 실행하게 됨 - full through
     </p>
+    <p>switch(조건식) {</p>
+    <p>case 값1: 코드블록; break;</p>
+    <p>case 값2: 코드블록; break;</p>
+    <p>...</p>
+    <p>default: 코드블록; break;</p>
+    <p>}</p>
+    <img src="img/switch 순서도.png" height="598" width="823" />
+    <br />
+    <script>
+      // 짝수, 홀수 여부 출력 v3
+      num = 4;
+      result = ``;
+      switch (num % 2) {
+        case 0:
+          result = `짝수입니다.`;
+          break;
+        case 1:
+          result = `홀수입니다.`;
+          break;
+      }
+      console.log(result);
+      // 오전, 오후 구분하여 출력 v2
+      time = "09:53:12";
+      let hour = Number(time[0] + time[1]);
+      result = "";
+      switch (hour) {
+        case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11:
+          result = `오전입니다!`;
+          break;
+        case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23: case 24:
+          result = "오후입니다!";
+          break;
+      }
+      console.log(result);
+      // 추천하지 않음. JS만 되기 때문에, 다른 언어의 적응에 어려움이 예상됨.
+      switch (true) {
+        case (hour < 12):
+          result = `오전입니다!`;
+          break;
+        case (hour >= 12):
+          result = "오후입니다!";
+          break;
+      }
+      console.log(result);
+      switch (timeHour < 12) {
+        case true:
+          result = "오전입니다.";
+          break;
+        case false:
+          result = "오후입니다.";
+          break;
+      }
+      console.log(result);
+    </script>
+    <script>
+      // 월을 입력하면 영어로 변환해서 출력
+      let monthEng = 11;
+      result = "";
+      switch (monthEng) {
+        case 1:
+          result = "January";
+          break;
+        case 2:
+          result = "February";
+          break;
+        case 3:
+          result = "March";
+          break;
+        case 4:
+          result = "April";
+          break;
+        case 5:
+          result = "May";
+          break;
+        case 6:
+          result = "June";
+          break;
+        case 7:
+          result = "July";
+          break;
+        case 8:
+          result = "August";
+          break;
+        case 9:
+          result = "September";
+          break;
+        case 10:
+          result = "October";
+          break;
+        case 11:
+          result = "November";
+          break;
+        case 12:
+          result = "December";
+          break;
+        default:
+          result= `잘못입력하셨습니다.`;
+      }
+      console.log(result);
+      // 월, 윤년여부(Y/N)를 입력하면 해당 월의 마지막 날을 출력
+      // 1,3,5,7,8,10,12 -31일
+      // 4,6,9,11 - 30일
+      // 2 - 윤년 여부에 따라 28(N)일 or 29(Y)일
+      year = 1600;
+      let leapYear = "";
+      let month = 10;
+      let resultMonth;
+      switch (month) {
+        case 1:
+          resultMonth = "January";
+          break;
+        case 2:
+          resultMonth = "February";
+          break;
+        case 3:
+          resultMonth = "March";
+          break;
+        case 4:
+          resultMonth = "April";
+          break;
+        case 5:
+          resultMonth = "May";
+          break;
+        case 6:
+          resultMonth = "June";
+          break;
+        case 7:
+          resultMonth = "July";
+          break;
+        case 8:
+          resultMonth = "August";
+          break;
+        case 9:
+          resultMonth = "September";
+          break;
+        case 10:
+          resultMonth = "October";
+          break;
+        case 11:
+          resultMonth = "November";
+          break;
+        case 12:
+          resultMonth = "December";
+          break;
+        default:
+          resultMonth = `잘못입력하셨습니다.`;
+      }
+      console.log(resultMonth);
+      if (year % 4 == 0) {
+        if (year % 100 != 0) {
+          leapYear = true;
+        } else {
+          if (year % 400 == 0) {
+            leapYear = true;
+          } else {
+            leapYear = false;
+          }
+        }
+      } else {
+        leapYear = false;
+      }
+      console.log(leapYear);
+      switch (month) {
+        case 2: if (leapYear) {result = 29;} else {result = 28;}
+          break;
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+          result = 31;
+          break;
+        case 4: case 6: case 9: case 11:
+          result = 30;
+          break;
+      }
 
+      console.log(
+              `${month}월은 영어로 ${resultMonth}이고, ${year}의 윤년여부는 ${leapYear}이며 ${year}년 ${month}월의 말일은 ${result}일 입니다.`
+      );
+      // 평균 점수에 따라 '수 우 미 양 가'로 성적 결과 출력. v2
+      avg = 100;
+      result = "";
+
+      switch ( parseInt(avg/10)){
+        case 10: case 9: result = '수'; break;
+        case 8: result = '우'; break;
+        case 7: result = '미'; break;
+        case 6: result = '양'; break;
+        default: result = '가'; break;
+      };
+      console.log(result);
+    </script>
     <p>
       javascript 한정으로 switch의 case문에 비교 연산자를 이용한 범위를 검사하는
       코드를 작성할 수도 있음

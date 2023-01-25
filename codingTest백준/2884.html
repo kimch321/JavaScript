@@ -8,12 +8,13 @@
 <script>
   let H = 10;
   let M = 10;
+  console.log(M-45 > 0, typeof M-45 > 0);
   switch (M-45 > 0) {
-    case 0:
-      H = H-1;
-      M = 60 + (M-45);
+    case false:
+      H = (H-1);
+      M = (60 + (M-45));
       break;
-    case 1:
+    case true:
       M = M-45;
       break;
   }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let H = 23;
+    let M = 48;
+    let cookTime = 25;
+    console.log(parseInt((M+cookTime)/60), typeof parseInt((M+cookTime)/60));
+    switch (M+cookTime >= 60) {
+    case false:
+    M = M+cookTime;
+    break;
+    case true:
+        if (H + parseInt((M+cookTime)/60) >= 24) {
+            H = H + parseInt((M+cookTime)/60) - 24
+        } else {
+            H = H + parseInt((M+cookTime)/60);
+        }
+    M = (M+cookTime)%60;
+    break;
+  }
+    console.log(`${H} ${M}`);
+</script>
+
+</body>
+</html>

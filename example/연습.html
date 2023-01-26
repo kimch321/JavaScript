@@ -6,13 +6,22 @@
 </head>
 <body>
 <script>
-    let result = '';
-    for (let i = 1; i <= 100; ++i) {
-        if ( i % 2 == 0) { // 짝수라면
-            result += i; // 어째선지 이러면 문자열이 된다., 숫자를 입력해서 문자열을 받았다. 좋지 않은 것 같다.
-            console.log(typeof result);
-        }
+    // 임의의 정수를 계속 입력하면
+    // 입력한 정수의 합을 계산함
+    // 단, 0을 입력하면 실행을 중지하고
+    // 지금까지의 총합을 출력
+    // 옵션 : 입력한 모든 정수도 같이 화면에 출력
+    let a = 6
+    let sum = 0;
+    let sum2 = [];
+    let i = 0;
+    while (a !== 0) {
+        sum2[i] = a;
+        i++
+        sum += a;
+        a = Math.floor(Math.random()*(3));
     }
+console.log(sum2,sum);
 </script>
 </body>
 </html>

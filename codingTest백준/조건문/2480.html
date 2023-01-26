@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>조건문</title>
+</head>
+<body>
+<script>
+let dice1 = 3;
+let dice2 = 4;
+let dice3 = 5;
+let result = 0;
+function diceProgram() { if (dice1 === dice2 && dice2 === dice3) {
+        result = (10000 + dice1 * 1000) + '원'+'모두 같음!!!!!!!!';
+    } else {
+        switch (dice1 === dice2) {
+            case true:
+                result = 1000 + dice1 * 100 + '원'+'두개 같음!!!!';
+                break;
+            case false: {
+                switch (dice1 === dice3) {
+                    case true:
+                        result = 1000 + dice1 * 100 + '원'+'두개 같음!!!!';
+                        break;
+                    case false: {
+                        switch (dice2 === dice3) {
+                            case true:
+                                result = 1000 + dice2 * 100 + '원'+'두개 같음!!!!';
+                                break;
+                            case false: {
+                                switch (dice1 > dice2 && dice1 > dice3) {
+                                    case true:
+                                        result = dice1 * 100 + '원'+'dice1이 가장 큼!';
+                                        break;
+                                    case false: {
+                                        switch (dice2 > dice1 && dice2 > dice3) {
+                                            case true:
+                                                result = dice2 * 100 + '원'+'dice2가 가장 큼!';
+                                                break;
+                                            case false:
+                                            {
+                                                switch(dice3 > dice1 && dice3 > dice2) {
+                                                    case true:
+                                                        result = dice3 * 100 + '원'+'dice3이 가장 큼!';
+                                                        break;
+                                                    default:
+                                                        result = `이런 경우는 없어.`
+                                                }
+                                            }
+                                                break;
+                                        }
+                                    }
+                                        break;
+                                }
+                            }
+                                break;
+                        }
+                    }
+                        break;
+                }
+            }
+                break;
+        }
+    }
+console.log(dice1,dice2,dice3,result);
+}
+// 검증방법, 각 다이스가 1~6일때의 값을 구해본다.
+console.clear();
+for (dice1 = 1; dice1 <= 6; dice1++) {
+    for (dice2 = 1; dice2 <= 6; dice2++) {
+        for (dice3 = 1; dice3 <= 6; dice3++) {
+            diceProgram();
+        }
+    }
+}
+
+</script>
+</body>
+</html>

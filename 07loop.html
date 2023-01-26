@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>loop</title>
+  </head>
+  <body>
+    <h1>loop</h1>
+    <h2>while</h2>
+  <p>조건식이 참일 동안 코드블록을 실행하는 반복문</p>
+  <p>만일, 조건식이 처음부터 거짓이면 코드블록은 한번도 실행되지 않을 수 있음</p>
+  <p>for는 반복 횟수를 처음부터 알고 있을 때 실행하는 반복문인 반면,
+    while은 반복 횟수를 모르고 실행하는 반복문임.</p>
+  <p>하지만, for문을 while문으로 또는 그 반대로의 변환이 가능</p>
+
+  <h2>while 구조</h2>
+  <p>초기식</p>
+  <p>while(조건식) {</p>
+  <p>실행할 코드들</p>
+  <p>증감식</p>
+  <p>}</p>
+    <script>
+      // 1 ~ 10까지의 정수 출력 v2
+      let i = 1;
+      while (i <= 10) {
+        console.log(i);
+        i++;
+      }
+      console.log('---')
+      // 1 ~ 100까지의 정수 중 짝수 출력 v2
+      i = 2;
+      while (i <= 100){
+        console.log(i);
+        i = i + 2;
+      }
+      console.log('---')
+      // 1 ~ 100까지 정수 총합 v2
+      i = 1;
+      let sum = 0;
+      while (i <= 100) {
+        sum += i;
+        i++;
+      }
+      console.log(sum);
+      console.log('---')
+      // 10 ~ 1까지 정수 출력 v2
+      i = 10;
+      while (i>0) {
+        console.log(i);
+        i--;
+      }
+      console.log('---')
+      // 구구단 출력 v5
+      i = 2;
+      let j = 1;
+      while ( i < 10) {
+        while (j < 10) {
+          console.log(`${i} * ${j} = `,i*j);
+          j++;
+        }
+        i++;
+        j = 1;
+      }
+      console.log('---')
+    </script>
+  <h2>무한 반복문 -while</h2>
+  <p>반복문의 조건식을 true라고 설정하면
+    해당 반복문을 무한 실행함</p>
+    <script>
+      // 임의의 정수를 계속 입력하면
+      // 입력한 정수의 합을 계산함
+      // 단, 0을 입력하면 실행을 중지하고
+      // 지금까지의 총합을 출력
+      // 옵션 : 입력한 모든 정수도 같이 화면에 출력
+      console.clear();
+      let a = Number(parseInt(prompt('숫자를 입력하세요!')));
+      sum = 0;
+      let sum2 = [];
+      i = 0;
+      while (a !== 0) {
+        sum2[i] = a;
+        i++
+        sum += a;
+        a = Number(parseInt(prompt('숫자를 입력하세요!')));
+      }
+      console.log(sum2);
+      for (let val of sum2) {
+        console.log(val);
+      }
+      console.log(sum);
+
+      sum =0;
+      // while (true) {
+      //   let num = parseInt(prompt('숫자를 입력하세요!'))
+      //   if (num == 0) break;
+      //   sum += num;
+      // }
+      // console.log()
+    </script>
+  </body>
+</html>

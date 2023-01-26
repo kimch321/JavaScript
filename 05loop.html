@@ -51,9 +51,10 @@
       }
       console.log("---");
       // 1 ~ 100까지의 정수 중 짝수 출력v3
-      let result = ''; // result를 스트링으로 정의했더니, 더해지는 값들이 스트링으로 암시적 형변환되었다.
+      let result = ""; // result를 스트링으로 정의했더니, 더해지는 값들이 스트링으로 암시적 형변환되었다.
       for (let i = 1; i <= 100; ++i) {
-        if ( i % 2 == 0) { // 짝수라면
+        if (i % 2 == 0) {
+          // 짝수라면
           result += i;
           console.log(typeof result);
         }
@@ -74,29 +75,119 @@
     <script>
       // 1 ~ 100까지의 정수의 총합 출력v2 - 가우스 덧셈
       // ((시작숫자 + 종료숫자) * (종료숫자 - 시작숫자 +1))/2
-      result = 100*(100+1)/2;
+      result = (100 * (100 + 1)) / 2;
       console.log(result);
-      if (result2=result){
-        console.log('같습니다.')
+      if ((result2 = result)) {
+        console.log("같습니다.");
       } else {
-        console.log('다릅니다.')
+        console.log("다릅니다.");
       }
       // 1 ~ 101까지의 정수의 총합
-      result = (101+1)*(101 - 1 + 1)/2
+      result = ((101 + 1) * (101 - 1 + 1)) / 2;
       console.log(result);
       console.log("---");
     </script>
     <script>
       // 10 ~ 1까지의 정수 출력
       result = ``;
-      for ( let i = 10; i > 0; i--) {
+      for (let i = 10; i > 0; i--) {
         console.log(i);
       }
-      for ( let i = 10; i > 0; i--) {
+      for (let i = 10; i > 0; i--) {
         result += i;
       }
       console.log(result);
       console.log("---");
+    </script>
+    <script>
+      // 구구단 만들기
+      for (let i = 2; i < 10; i++) {
+        for (let j = 1; j < 10; j++) {
+          console.log(`${i} * ${j} =`, i * j);
+        }
+      }
+    </script>
+    <h2>무한 반복문 - for</h2>
+    <p>
+      for문의 경우 초기식,판별식,증감식을 비워두면 반복을 끊임없이 실행하는
+      무한반복문이 됨
+    </p>
+    <script>
+      // for (let i = 1;;) {
+      //   console.log('hello world');
+      // }
+    </script>
+  <h2>중첩반복문 - for</h2>
+  <p>2개 이상의 for문을 겹쳐 사용하는 반복문</p>
+  <p>복잡한 작업을 반복 실행할 때 유용</p>
+  <script>
+    // 별 5개씩 5줄 출력
+    for ( let i = 1; i < 6; i++) {
+      document.write(`*****<br>`);
+    }
+  </script>
+    <script>
+      // 별* 피라미드 출력
+      for (let i = 1; i <= 10; i++) {  //층 반복문
+        for (let j=1; j <= i; j++) {  //별 반복문
+          document.write(`*`)
+        }
+        document.write('<br>')
+      }
+    </script>
+    <script>
+      // 별* 역피라미드 출력 V1
+      for (let i = 10; i > 0; i--) {
+        for (let j = 1; j <= i; j++) {
+          document.write(`*`)
+        }
+        document.write('<br>')
+      }
+      // 별* 역피라미드 출력 V2
+      for (let i = 1; i <= 10; i++) {
+        for (let j = 10; i <= j; j--) {
+          document.write(`*`)
+        }
+        document.write('<br>')
+      }
+    </script>
+    <script>
+      // 구구단 v2
+
+        for (let i = 1; i < 10; i++) {
+          for (let j = 2; j < 6; j++) {
+            document.write(`${j} * ${i} =`, j * i,`&nbsp`,`&nbsp`,`&nbsp`,`&nbsp`);
+          }
+          document.write('<br>')
+        }
+    </script>
+    <h2>break</h2>
+    <p>
+      원하는 시점에 반복문이나 코드블록에서 벗어나기 위해 사용
+    </p>
+  <script>
+    // 1~1000까지 총합을 계산
+    // 단, 총합이 10000을 넘으면 계산을 중단함
+    let result3 = null;
+    for (let i = 1; i <= 1000; i++) {
+      if(result3 > 10000) {break;}
+      result3 += i;
+    }
+    console.log(result3);
+  </script>
+  <h2>continue</h2>
+  <p>반복문의 코드실행을 현 지점에서 중단하고 반복문의 증감식이나 조건식으로 제어를 이동시킴</p>
+  <p>즉, 반복을 일시적으로 건너뛰어 다음 반복으로 넘어감</p>
+    <script>
+      // 1~1000까지 총합을 계산
+      // 단, 5의 배수나 7의 배수는 계산에서 제외함.
+      for (let i = 1; i <= 1000; i++) {
+        if ( i % 5 === 0 || i % 7 === 0) {
+          continue;
+        }
+        result3 += i;
+      }
+      console.log(result3);
     </script>
   </body>
 </html>

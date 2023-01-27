@@ -48,11 +48,11 @@
       // 년도를 입력하면 윤년여부를 계산해서 출력
       // 윤년여부를 계산하는 함수 : computeLeapYear
       function computeLeapYear (year) {
-      if (year % 4 == 0) {
-        if (year % 100 != 0) {
+      if (year % 4 === 0) {
+        if (year % 100 !== 0) {
           return `${year} - 윤년입니다!`;
         } else {
-          if (year % 400 == 0) {
+          if (year % 400 === 0) {
             return `${year} - 윤년입니다!`;
           } else {
             return `${year} - 평년입니다!`;
@@ -63,6 +63,15 @@
       }
       }
       document.write(computeLeapYear (1600));
+      document.write('<br>');
+      function computeLeapYear2 (year) {
+        let result = '평년입니다.'
+        if (year % 4 === 0 && year % 100 !==0 || year % 400 === 0) {
+          result = '윤년입니다.'
+        }
+        return result;
+      }
+      document.write(computeLeapYear2(1600));
       document.write('<br>');
       // 층 수를 입력받아
       // 별 * 피라미드 출력 : showStarPuramid
@@ -78,7 +87,21 @@
       }
       showStarPuramid(20);
       document.write('<br>');
-      // 시분초를 입력받아(hh:mm:ss)
+      function showStarPuramid2(h) {
+        let result = '';
+        for (let i = 1; i <= h; i++) {
+          //층 반복문
+          for (let j = 1; j <= i; j++) {
+            //별 반복문
+            result +='*';
+          }
+          result += '<br>';
+        }
+        document.write(result)
+      }
+      showStarPuramid2(20);
+      document.write('<br>');
+      // 시분초를 입력받아(hh24:mm:ss)
       // 오전, 오후 구분하여 출력 : showAMPM
       function showAMPM(time) {
         timeHour = time[0]+time[1];
@@ -94,8 +117,9 @@
       // 국어, 영어, 수학을 입력하면
       // 학점을 출력하는 함수 : computeGrade
       function computeGrade(kor, eng, math) {
-        let avg = (kor + eng + math)/3
-        let result = "가";
+        let avg = 0, result = '';   // 다중변수 선언
+        avg = (kor + eng + math)/3
+        result = "가";
         if (avg >= 90) {
           result = "수";
         } else if (avg >= 80) {
@@ -105,9 +129,9 @@
         } else if (avg >= 60) {
           result = "양";
         }
-        document.write(result);
+        return result;
       }
-      computeGrade(50,60,70);
+      document.write(computeGrade(50,60,70));
       document.write('<br>');
     </script>
   </body>

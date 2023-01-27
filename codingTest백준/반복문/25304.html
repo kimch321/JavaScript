@@ -6,18 +6,67 @@
 </head>
 <body>
  <script>
-   let totalCost = X;
-   let totalNum = N;
-   let cost = a;
-   let num = b;
-   for (let i = 1; i <= num; i++) {
-     totalCost += cost;
-   }
-  if (ab === N) {
-    result = 'Yes';
-  } else {
-    result = 'No';
-  }
+     // 변수에 들어갈 수 있는 값에 제한을 두어야 한다. 어떻게?
+     // 1.if else문 사용
+
+     // 질문 1. 지불한 총 액은?           //totalCost 결정
+     // 질문 2. 구매한 품목의 수는?        // 변수 생성, itemNum = [] 배열 삽입
+     // 질문 3. 품목 1의 가격은?
+     // 질문 4. 품목 1의 구매량은?
+     // ...
+     let totalCost = Number(prompt('지불한 총 액은?'));
+     let totalNum = Number(prompt('구매한 품목의 수는?'));
+     function cal2(totalCost, totalNum) {
+         let items = [];
+         let i = 0;
+         while (i < totalNum) {
+             items[i] = {};
+             i++
+         }
+         // 여기서 items 배열에 구매한 물품 수 만큼의 객체가 생성된다.
+         // 이제 객체에 변수를 삽입해야 한다. 반복문으로.
+         // 객체에 변수를 삽입하는 방법을 공부한다.
+         for (let i = 0; i < items.length; i++) {
+         items[i].cost = Number(prompt(`${i+1}번 품목의 가격은?`));
+         items[i].num = Number(prompt(`${i+1}번 품목의 구매갯수는?`));
+         }
+         // 여기서 배열이 완성되었다. 이제 비교군을 계산해야 한다. 반복문으로.
+         let compareCost = 0;
+         for ( let j = 0; j < items.length; j++) {
+             for (let i = 1; i <= items[j].num; i++) {
+                 compareCost += items[j].cost;
+             }
+         }
+         // 이제 비교군과 지불한 금액을 비교한다.
+         if (compareCost === totalCost) {
+             return 'Yes';
+         } else {
+             return 'No';
+         }
+     }
+     console.log(cal2(totalCost, totalNum));
+     // document.write(Cal());
+     /*     function Cal () {
+              let totalCost = 260000;
+              const A = {cost:20000, num:5}; // 100000
+              const B = {cost:30000, num:2}; // 60000
+              const C = {cost:10000, num:6}; // 60000
+              const D = {cost:5000, num:8} // 40000
+              let itemNum = [A,B,C,D]
+              let totalNum = itemNum.length; // 4
+              // 비교군 계산.
+              let compareCost = 0;
+              for ( let j = 0; j <= totalNum-1; j++) {
+                  for (let i = 1; i <= itemNum[j].num; i++) {
+                      compareCost += itemNum[j].cost;
+                  }
+              }
+              if (compareCost === totalCost) {
+                  return 'Yes';
+              } else {
+                  return 'No';
+              }
+          }*/
  </script>
 </body>
 </html>

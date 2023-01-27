@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 콜백 함수</title>
+  </head>
+  <body>
+    <h1>자바스크립트 콜백 함수</h1>
+    <h2>개요</h2>
+    <p>
+      다른 함수의 인자로 사용되는 함수 또는 어떤 이벤트에 의해 호출되는 함수를
+      의미.
+    </p>
+    <p>주로, 프로그램이 실행되는 동안 지속적으로 수행해야 하는 작업이 있을때 사용 - 비동기 프로그래밍</p>
+    <p>어떤 정보를 원하는 쪽이 정보를 제공하는 쪽에게 반복적으로 확인(요구)하는 것보다
+      정보를 제공하는 쪽이 정보를 원하는 쪽에 통보하는 것이 효율적임.</p>
+    <p>달걀을 삶을때 적정 시간이 되었는지 확인해야 하거나 친구랑 놀고 있을때 집에 가야할 시간을 확인해야 할때
+      타이머/알람(콜백함수)를 이용하는 것과 동일</p>
+    <p>ES5/ES6에서 promise나 asycn/await 등이 추가되어 콜백할수의 사용은 줄이는 추세임.</p>
+    <script>
+      let showHello10 = (call) => {
+        for (let i = 1; i <= 10; i++) {
+          call();
+        }
+      };
+
+      let sayHello = () => document.write("Hello, World!!", "<br>");
+      let sayHello2 = () => console.log("Hello, World!!");
+      // 콜백 함수를 인자로 전달할 때는 ()생략!
+      showHello10(sayHello);
+    </script>
+    <h2>타이머 함수</h2>
+    <p>특정 시간이 지난후에 함수를 실행하려면 setTimeout함수를 사용</p>
+    <p>특정 시간마다 함수를 실행하려면 setInterval함수를 사용</p>
+
+    <script>
+      // sayHello2 함수를 5초 후에 호출함
+      // 1초는 1000밀리초로 변환해서 사용
+      setTimeout(sayHello2, 5000);
+    </script>
+    <script>
+      // sayHello2 함수를 5초 마다 호출함
+      // 1초는 1000밀리초로 변환해서 사용
+      setInterval(sayHello2, 5000);
+    </script>
+    <script>
+      function showDateTime() {
+        function showAMPM() {
+          let time = date.getHours(); //이게 왜 작동하지? let으로 선언했으니 hoisting이 안되야 하는 거 아닌가??
+          switch (time < 12) {
+            case true:
+              return "오전";
+            case false:
+              return "오후";
+          }
+        }
+        function hh12() {
+          let time = date.getHours();
+          switch (time < 12) {
+            case true:
+              return time;
+            case false:
+              return time - 12;
+          }
+        }
+        let date = new Date();  // 여기서 선언했는데,
+        let day = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+        let today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${day[date.getDay()]} ${showAMPM()} ${hh12()}:${date.getMinutes()}:${date.getSeconds()}`
+        console.log(today);
+      }
+      // 1초마다 현재날짜와 시간을 출력
+      setInterval(showDateTime, 1000);
+    </script>
+  </body>
+</html>

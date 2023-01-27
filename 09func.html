@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h2>함수 외부 참조</h2>
+    <p>
+      함수 정의를 독립적인 소스파일에 작성하고 사용하려는 곳에서 이것을 호출해서
+      사용할 수 있음
+    </p>
+    <p>script 태그의 src 속성을 이용해서 소스파일을 지정해야 함</p>
+    <script src="js/09func.js">
+      document.write(computeGrade(50,60,70)); // 안 불러와진다.
+    </script>
+    <script>
+      document.write(computeGrade(50, 60, 70));
+      document.write("<br>", "---", "<br>");
+      showStarPuramid(20);
+      document.write("<br>", "---", "<br>");
+      document.write(showAMPM("09:56:20"));
+      document.write("<br>", "---", "<br>");
+    </script>
+    <h2>익명함수</h2>
+    <p>자바스크립트의 함수는 1급시민이므로 값으로 취급 할 수 있음</p>
+    <p>
+      함수를 익명으로 정의한 후 변수에 대입하는 식으로 함수를 선언할 수 있음.
+    </p>
+    <script>
+      let sayhello4 = function () {
+        console.log("Hello, World!!");
+      };
+      sayhello4();
+      result = sayhello4;
+      result();
+    </script>
+    <h2>화살표 함수</h2>
+    <p>ES6에서 추가된 기능으로 함수 선언을 간단하게 작성 가능</p>
+    <p>즉, function이라는 키워드 대신 =>를 이용해서 함수를 선언할 수 있음.</p>
+    <script>
+      let sayhello5 = (msg) => {
+        return `Hello, ${msg}!!`;
+      };
+      document.write(sayhello5('coffee'));
+      document.write("<br>", "---", "<br>");
+    </script>
+    <script>
+      // 변수명 = () 코드
+      let sayhello6 = (msg) =>
+        document.write(`Hello, ${msg}!!`);
+      sayhello6('중괄호 생략 화살표 함수');
+      document.write("<br>", "---", "<br>");
+      // 괄호 생략, return 화살표 함수
+      let sayhello7 = (msg) =>
+        `Hello, ${msg}!!`;
+      result = sayhello7('괄호 생략 return 화살표 함수는 return 키워드를 반드시 생략해야 한다.')
+      document.write(result);
+      document.write("<br>", "---", "<br>");
+    </script>
+    <script>
+      // 부가세 계산 프로그램 : computeVAT
+      // 금액을 입력하면 부가세를 계산해서 출력
+      // 1. 금액 입력
+      // 2. 부가세 계산 입력금액*11/100
+
+      // 선언형
+      function computeVAT(salePrice) {
+        let vat = salePrice/11;
+        return parseInt(vat)
+      }
+      document.write(computeVAT(10000));
+      document.write("<br>", "---", "<br>");
+
+      // 익명
+      let computeVAT2 = function (salePrice) {
+        let vat = salePrice/11;
+        return parseInt(vat)
+      }
+      document.write(computeVAT2(20000));
+      document.write("<br>", "---", "<br>");
+
+      // 화살표 v1
+      let computeVAT3 = (salePrice) => {
+        let vat = salePrice/11;
+        return parseInt(vat)
+      }
+      document.write(computeVAT3(30000));
+      document.write("<br>", "---", "<br>");
+
+      // 화살표 v2 //중괄호 생략
+      let computeVAT4 = (salePrice) =>
+        document.write(parseInt(salePrice/11));
+
+      computeVAT4(40000);
+      document.write("<br>", "---", "<br>");
+
+      // 화살표 v3 //중괄호 생략 return 생략
+      let computeVAT5 = (salePrice) =>
+              parseInt(salePrice/11);
+      document.write(computeVAT5(50000));
+      document.write("<br>", "---", "<br>");
+    </script>
+  </body>
+</html>

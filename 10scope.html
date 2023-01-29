@@ -40,15 +40,15 @@
 <script>
     let f = 1;
     {
-        document.write(f, '<br>'); // f = 1
+        console.log(f); // f = 1
         f = 3;
-        document.write(f, '<br>'); // f = 3으로 초기화. 즉 전역변수 f가 스코프 안에 영향을 미친다는 걸 확인할 수 있다.
+        console.log(f); // f = 3으로 초기화. 즉 전역변수 f가 스코프 안에 영향을 미친다는 걸 확인할 수 있다.
         {
-            document.write(f, '<br>'); // 에러발생. 나의 생각엔 바깥에서 f = 3;으로 초기화되었으므로, 여기서 3이 출력되고, / 이 말은 이 부분을 해석할 때 다음줄에서 let f = 4;가 선언된다는 사실을 프로그램이 알고 있어야 한다.
+            // document.write(f, '<br>'); // 에러발생. 나의 생각엔 바깥에서 f = 3;으로 초기화되었으므로, 여기서 3이 출력되고, / 이 말은 이 부분을 해석할 때 다음줄에서 let f = 4;가 선언된다는 사실을 프로그램이 알고 있어야 한다.
             let f = 4;
-            document.write(f, '<br>'); // 여기서 부턴 let f = 4;로 선언되었기에 4가 출력되어야 할 것 같다.
+            console.log(f); // 여기서 부턴 let f = 4;로 선언되었기에 4가 출력되어야 할 것 같다.
         }
-        document.write(f, '<br>');
+        console.log(f);
     }
 </script>
 <h2>호이스팅</h2>

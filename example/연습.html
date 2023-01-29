@@ -5,24 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<script>
-    function Lotto () {
-        let lottokey = prompt('lotto 당첨번호를 입력하세요.');
-        let yourkey = prompt('3자리 숫자를 입력하세요 단, 각자리의 숫자는 0~9까지이고, 각 숫자는 중복될 수 없습니다.');
-        let result = [];
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                if (yourkey[i] === lottokey[j]) {
-                    result.push(`일치`);
-                }
-            }
-            if (result[i] !== `일치`) {
-                return '아쉽지만, 다음 기회를';
-            }
-        }
-        return '상금 100백만 지급'
+<SCRIPT>
+    function isEnglish(str) {
+        return /^[a-zA-Z]+$/.test(str);
     }
-    // console.log(Lotto ());
-</script>
+    console.log(isEnglish('str'));
+</SCRIPT>
 </body>
 </html>

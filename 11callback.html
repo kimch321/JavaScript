@@ -46,7 +46,7 @@
     <script>
       function showDateTime() {
         function showAMPM() {
-          let time = date.getHours(); //이게 왜 작동하지? let으로 선언했으니 hoisting이 안되야 하는 거 아닌가??
+          let time = date.getHours();
           switch (time < 12) {
             case true:
               return "오전";
@@ -63,7 +63,7 @@
               return time - 12;
           }
         }
-        let date = new Date();  // 여기서 선언했는데,
+        let date = new Date();
         let day = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
         let today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${day[date.getDay()]} ${showAMPM()} ${hh12()}:${date.getMinutes()}:${date.getSeconds()}`
         console.log(today);

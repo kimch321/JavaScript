@@ -24,6 +24,76 @@
       return '상금 100백만 지급'
   }
   // console.log(Lotto ());
+  // 26.
+  function Tax () {
+      let marry = Number(prompt('결혼 여부를 입력하세요. / 미혼 : 0, 기혼 : 1'));
+      let annualIncome = Number(prompt('연봉을 만원단위로 입력하세요.'));
+      switch (marry) {
+          case 0:
+              if (annualIncome < 3000) {
+                  return `내야할 세금은 ${annualIncome*10/100}만원 입니다.`;
+              } else {
+                  return `내야할 세금은 ${annualIncome*25/100}만원 입니다.`;
+              }
+          case 1:
+              if (annualIncome < 6000) {
+                  return `내야할 세금은 ${annualIncome*15/100}만원 입니다.`;
+              } else {
+                  return `내야할 세금은 ${annualIncome*35/100}만원 입니다.`;
+              }
+      }
+  }
+  // console.log(Tax());
+  // Tax함수를 ? 로 고쳐보기
+  function Tax2 () {
+      let marry = Number(prompt('결혼 여부를 입력하세요. / 미혼 : 0, 기혼 : 1'));
+      let annualIncome = Number(prompt('연봉을 만원단위로 입력하세요.'));
+      let result = '';
+      switch (marry) {
+          case 0:
+            result = annualIncome < 3000 ?  `내야할 세금은 ${annualIncome*10/100}만원 입니다.` : `내야할 세금은 ${annualIncome*25/100}만원 입니다.`
+              return result;
+          case 1:
+            result = annualIncome < 6000 ?  `내야할 세금은 ${annualIncome*15/100}만원 입니다.` : `내야할 세금은 ${annualIncome*35/100}만원 입니다.`
+              return result;
+      }
+  }
+  //console.log(Tax2());
+  // 28.
+  function GuGuDan (dan) {
+      if (typeof (dan) === 'number') {
+          if ( dan < 1 || dan > 9) {
+              console.log(`잘못 입력하셨습니다!!`);
+          } else {
+              if ( dan % 1 !== 0) {
+                  console.log(`잘못 입력하셨습니다!!`);
+              } else {
+                  for (let i = 1; i < 10; i++) {
+                      console.log(`${dan} * ${i} = ${dan * i}`);
+              }
+          }
+          }
+      } else {
+          console.log(`잘못 입력하셨습니다!!`);
+      }
+  }
+  // GuGuDan ();
+  // 29.
+  function UpperCase (char){
+      let charToUnicode = null;
+      if (typeof(char) !== 'string') {
+          console.log('잘못 입력하셨습니다!!')
+      } else {
+          for(let i = 0; i < char.length; i++) {
+
+          }
+      }
+
+  }
+  // 30.
+  function CatchNumber () {
+
+  }
   // 31.
   function IndentifyNumber () {
     let number = Number(prompt('정수를 입력하세요.'));

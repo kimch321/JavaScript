@@ -1,252 +1,317 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-</head>
-<body>
-<script>
-  // 25.
-  function Lotto () {
-      let lottokey = prompt('lotto 당첨번호를 입력하세요.');
-      let yourkey = prompt('3자리 숫자를 입력하세요 단, 각자리의 숫자는 0~9까지이고, 각 숫자는 중복될 수 없습니다.');
-      let result = [];
-      for (let i = 0; i < 3                       ; i++) {
+  </head>
+  <body>
+    <script>
+      // 25.
+      function Lotto() {
+        let lottokey = prompt("lotto 당첨번호를 입력하세요.");
+        let yourkey = prompt(
+          "3자리 숫자를 입력하세요 단, 각자리의 숫자는 0~9까지이고, 각 숫자는 중복될 수 없습니다."
+        );
+        let result = [];
+        for (let i = 0; i < 3; i++) {
           for (let j = 0; j < 3; j++) {
-              if (yourkey[i] === lottokey[j]) {
-                  result.push(`일치`);
-              }
+            if (yourkey[i] === lottokey[j]) {
+              result.push(`일치`);
+            }
           }
           if (result[i] !== `일치`) {
-              return '아쉽지만, 다음 기회를';
+            return "아쉽지만, 다음 기회를";
           }
+        }
+        return "상금 100백만 지급";
       }
-      return '상금 100백만 지급'
-  }
-  // console.log(Lotto ());
-  // 26.
-  function Tax () {
-      let marry = Number(prompt('결혼 여부를 입력하세요. / 미혼 : 0, 기혼 : 1'));
-      let annualIncome = Number(prompt('연봉을 만원단위로 입력하세요.'));
-      switch (marry) {
+      // console.log(Lotto ());
+      // 26.
+      // Tax함수를 ? 로 고쳐보기
+      function Tax() {
+        let ismarried = Number(
+          prompt("결혼 여부를 입력하세요. / 미혼 : 0, 기혼 : 1")
+        );
+        let annualIncome = Number(prompt("연봉을 만원단위로 입력하세요."));
+        let result = "";
+        switch (ismarried) {
           case 0:
-              if (annualIncome < 3000) {
-                  return `내야할 세금은 ${annualIncome*10/100}만원 입니다.`;
-              } else {
-                  return `내야할 세금은 ${annualIncome*25/100}만원 입니다.`;
-              }
+            result =
+              annualIncome < 3000
+                ? `내야할 세금은 ${(annualIncome * 10) / 100}만원 입니다.`
+                : `내야할 세금은 ${(annualIncome * 25) / 100}만원 입니다.`;
+            return result;
           case 1:
-              if (annualIncome < 6000) {
-                  return `내야할 세금은 ${annualIncome*15/100}만원 입니다.`;
-              } else {
-                  return `내야할 세금은 ${annualIncome*35/100}만원 입니다.`;
-              }
+            result =
+              annualIncome < 6000
+                ? `내야할 세금은 ${(annualIncome * 15) / 100}만원 입니다.`
+                : `내야할 세금은 ${(annualIncome * 35) / 100}만원 입니다.`;
+            return result;
+        }
       }
-  }
-  // console.log(Tax());
-  // Tax함수를 ? 로 고쳐보기
-  function Tax2 () {
-      let marry = Number(prompt('결혼 여부를 입력하세요. / 미혼 : 0, 기혼 : 1'));
-      let annualIncome = Number(prompt('연봉을 만원단위로 입력하세요.'));
-      let result = '';
-      switch (marry) {
-          case 0:
-            result = annualIncome < 3000 ?  `내야할 세금은 ${annualIncome*10/100}만원 입니다.` : `내야할 세금은 ${annualIncome*25/100}만원 입니다.`
-              return result;
-          case 1:
-            result = annualIncome < 6000 ?  `내야할 세금은 ${annualIncome*15/100}만원 입니다.` : `내야할 세금은 ${annualIncome*35/100}만원 입니다.`
-              return result;
-      }
-  }
-  //console.log(Tax2());
-  // 28.
-  function GuGuDan (dan) {
-      if (typeof (dan) === 'number') {
-          if ( dan < 1 || dan > 9) {
-              console.log(`잘못 입력하셨습니다!!`);
+      //console.log(Tax());
+      // 28.
+      function GuGuDan(dan) {
+        if (typeof dan === "number") {
+          if (dan < 1 || dan > 9) {
+            console.log(`잘못 입력하셨습니다!!`);
           } else {
-              if ( dan % 1 !== 0) {
-                  console.log(`잘못 입력하셨습니다!!`);
-              } else {
-                  for (let i = 1; i < 10; i++) {
-                      console.log(`${dan} * ${i} = ${dan * i}`);
+            if (dan % 1 !== 0) {
+              console.log(`잘못 입력하셨습니다!!`);
+            } else {
+              for (let i = 1; i < 10; i++) {
+                console.log(`${dan} * ${i} = ${dan * i}`);
               }
+            }
           }
-          }
-      } else {
+        } else {
           console.log(`잘못 입력하셨습니다!!`);
+        }
       }
-  }
-  // GuGuDan ();
-  // 29.
-  function UpperCase (char){
-      let charToUnicode = null;
-      if (typeof(char) !== 'string') {
-          console.log('잘못 입력하셨습니다!!')
-      } else {
-          for(let i = 0; i < char.length; i++) {
-
+      // GuGuDan ();
+      // 29.
+      //아직 못만들었음.
+      function UpperCase(char) {
+        let charToUnicode = null;
+        if (typeof char !== "string") {
+          console.log("잘못 입력하셨습니다!!");
+        } else {
+          for (let i = 0; i < char.length; i++) {}
+        }
+      }
+      // 30.
+      function naturalNumberReader(num) {
+        if (num > 0 && num % 1 === 0) {
+          return "자연수입니다.";
+        } else {
+          return "자연수가 아닙니다.";
+        }
+      }
+      // console.log(naturalNumberReader(0));
+      function CatchNumber(num2) {
+          let num1 = 0;
+        while (true) {
+          num1 = Number(prompt("1 ~ 100사이의 숫자를 입력하세요."));
+          if (num1 > 0 && num1 % 1 === 0) {
+            if (num1 > num2) {
+              result = "추측한 숫자가 큽니다";
+            } else if ((num1 === num2)) {
+              result = "빙고! 숫자를 맞혔습니다.";
+              console.log(result);
+              break;
+            } else {
+              result = "추측한 숫자가 작습니다.";
+            }
+            console.log(result);
+          } else {
+              console.log('잘못된 숫자를 입력했습니다.');
           }
+        }
       }
-
-  }
-  // 30.
-  function CatchNumber () {
-
-  }
-  // 31.
-  function IndentifyNumber () {
-    let number = Number(prompt('정수를 입력하세요.'));
-    if (number > 0) {
-      return '양수입니다.'
-    } else if (number === 0){
-      return '0입니다.'
-    } else {
-      return '음수입니다.'
-    }
-  }
-  // console.log(IndentifyNumber());
-  // 32.
-  function CheckNumber () {
-    let number = Number(prompt('정수를 입력하세요.'));
-    if (number < 10000) {
-      return '10000미만';
-    } else if (number < 20000) {
-      return '10000~20000';
-    } else if (number < 30000) {
-      return '20000~30000';
-    } else {
-      return '범위 밖 값';
-    }
-  }
-  // console.log(CheckNumber ());
-  // 33.
-  function CardCheck () {
-    let number = prompt('정수를 입력하세요.');
-    let result = '';
-    if (number[0] == 4) {
-      result += '비자카드, '
-      if (number == 404825) {
-        result += '비씨카드';
-      } else if (number == 438676) {
-        result += '신한카드';
-      } else if (number == 457973) {
-        result += '국민은행';
+      //CatchNumber(20);
+      // 31.
+      function IndentifyNumber() {
+        let number = Number(prompt("정수를 입력하세요."));
+        if (number > 0) {
+          return "양수입니다.";
+        } else if (number === 0) {
+          return "0입니다.";
+        } else {
+          return "음수입니다.";
+        }
       }
-    } else if (number[0] == 5) {
-      result += '마스타카드, Maestro, '
-      if (number == 515594) {
-        result += '신한카드';
-      } else if (number == 524353) {
-        result += '외한카드';
-      } else if (number == 540926) {
-        result += '국민은행';
+      // console.log(IndentifyNumber());
+      // 32.
+      function CheckNumber() {
+        let number = Number(prompt("정수를 입력하세요."));
+        if (number < 10000) {
+          return "10000미만";
+        } else if (number < 20000) {
+          return "10000~20000";
+        } else if (number < 30000) {
+          return "20000~30000";
+        } else {
+          return "범위 밖 값";
+        }
       }
-    } else if (number[0]+number[1] == 35) {
-      result += 'JCB카드, '
-      if (number == 356317) {
-        result += 'NH농협카드';
-      } else if (number == 356901) {
-        result += '신한카드';
-      } else if (number == 356912) {
-        result += 'KB국민카드';
+      // console.log(CheckNumber ());
+      // 33.
+      function CardCheck() {
+        let number = prompt("정수를 입력하세요.");
+        let result = "";
+        let num = number[1] + number[2] + number[3] + number[4] + number[5]
+        if (number[0] === '4') {
+          result += "비자카드, ";
+          switch (num) {
+            case '04825':
+              result += "비씨카드";
+              break;
+            case '38676':
+              result += "신한카드";
+              break;
+            case '57973':
+              result += "국민은행";
+              break;
+          }
+        } else if (number[0] === '5') {
+          result += "마스타카드, Maestro, ";
+          switch (num) {
+            case '15594':
+              result += "신한카드";
+              break;
+            case '24353':
+              result += "외한카드";
+              break;
+            case '40926':
+              result += "국민은행";
+              break;
+          }
+        } else if (number[0] + number[1] === '35') {
+          result += "JCB카드, ";
+          num = number[2] + number[3] + number[4] + number[5];
+          switch (num) {
+            case '6317':
+              result += "NH농협카드";
+              break;
+            case '6901':
+              result += "신한카드";
+              break;
+            case '6912':
+              result += "KB국민카드";
+              break;
+          }
+        }
+        return result;
       }
-    }
-    return result;
-  }
-  // console.log(CardCheck ());
-  //34.
-  function CalcurateFee () {
-    let distance = Number(prompt('거리를 km단위로 입력하세요.'));
-    if (distance < 50) {
-      return '10000원'
-    } else if (distance < 100) {
-      return '18000원'
-    } else if (distance < 300) {
-      return '55000원'
-    } else {
-      return '75000원'
-    }
-  }
-  // console.log(CalcurateFee ());
-  // 35.
-  function CheckDayTime () {
-    let daytime = prompt('시간때를 의미하는 영어단어를 입력하세요.');
-    if (daytime === 'morning hours') {
-      return '아침시간 (7-12)';
-    } else if (daytime === 'midday' || daytime === 'noon') {
-      return '점심시간 (12-1)';
-    } else if (daytime === 'afternoon hours') {
-      return '오후 (1-6)';
-    } else if (daytime === 'evening hours') {
-      return '저녁시간 (6-9)';
-    } else if (daytime === 'night hours') {
-      return '밤시간 (9-12)';
-    } else if (daytime === 'midnight') {
-      return '자정시간 (12)'
-    } else if (daytime === 'early morning hours') {
-      return '새벽시간 (12-5)';
-    } else if (daytime === 'small hours') {
-      return '새벽 (1-3)';
-    } else if (daytime === 'dawn' || daytime === 'daybreak') {
-      return '해뜰력 (5-7)';
-    }
-  }
-  // console.log(CheckDayTime ());
-  // 48.
-  function ComputeInvestment () {
-    const compareNum = 50000;
-    const Balance = 25000;
-    let tot = 0;
-    for (let i = 0; i <= 12; i++) {
-      tot =+ Balance*(1.06)**i;
-    }
-    if (tot >= compareNum) {
-      return '12년 뒤 두배 수익이 난다는 말은 \'참\'입니다.'
-    } else {
-      return '12년 뒤 두배 수익이 난다는 말은 \'거짓\'입니다.'
-    }
-  }
-  // console.log(ComputeInvestment ());
-  //51.
-  function BigGugudan () {
-    console.log (`\t\t\tMultiplication Table`)
-    console.log (`\t\t1\t2\t3\t4\t5\t6\t7\t8\t9`)
-    console.log (`-----------------------------------------`)
-    console.log (`1 |\t\t1\t2\t3\t4\t5\t6\t7\t8\t9`)
-    console.log (`2 |\t\t2\t4\t6\t8\t10\t12\t14\t16\t18`)
-    console.log (`3 |\t\t3\t6\t9\t12\t15\t18\t21\t24\t27`)
-    console.log (`4 |\t\t4\t8\t12\t16\t20\t24\t28\t32\t36`)
-    console.log (`5 |\t\t5\t10\t15\t20\t25\t30\t35\t40\t45`)
-    console.log (`6 |\t\t6\t12\t18\t24\t30\t36\t42\t48\t54`)
-    console.log (`7 |\t\t7\t14\t21\t28\t35\t42\t49\t56\t63`)
-    console.log (`8 |\t\t8\t16\t24\t32\t40\t48\t56\t64\t72`)
-    console.log (`9 |\t\t9\t18\t27\t36\t45\t54\t63\t72\t81`)
-  };
-  // console.log(BigGugudan ());
-  //53.
-  let year = 2005
-  let calrendar =Math.round(((year - 1)*365 + (year -1)/4 - (year -1)/100 + (year -1)/400) % 7 + 1);
-  function CalrendarV1 (year) {
-    console.log (`\t\t\t\t January ${year}`)
-    console.log (`----------------------------------------------------`)
-    console.log (` Sun\tMon \tTue \tWed \tThu \tFri \tSat `)
-    console.log (` `)
-  };
-  //49.
-  function GreatDivider () {
-    let list1 = [];
-    let n1 = Number(prompt('정수1을 입력하세요'));
-    let i = 2;
-    while (i<= n1) {
-      while (n1 % i === 0) {
-        list1.push(i);
-        n1 /= i;
+      //console.log(CardCheck ());
+      //34.
+      function CalcurateFee() {
+        let distance = Number(prompt("거리를 km단위로 입력하세요."));
+        if (distance < 50) {
+          return "10000원";
+        } else if (distance < 100) {
+          return "18000원";
+        } else if (distance < 300) {
+          return "55000원";
+        } else {
+          return "75000원";
+        }
       }
-      i++
-    }
-    console.log(list1);
-  };
-</script>
-</body>
+      // console.log(CalcurateFee ());
+      // 35.
+      function CheckDayTime() {
+        let daytime = prompt("시간때를 의미하는 영어단어를 입력하세요.");
+        if (daytime === "morning hours") {
+          return "아침시간 (7-12)";
+        } else if (daytime === "midday" || daytime === "noon") {
+          return "점심시간 (12-1)";
+        } else if (daytime === "afternoon hours") {
+          return "오후 (1-6)";
+        } else if (daytime === "evening hours") {
+          return "저녁시간 (6-9)";
+        } else if (daytime === "night hours") {
+          return "밤시간 (9-12)";
+        } else if (daytime === "midnight") {
+          return "자정시간 (12)";
+        } else if (daytime === "early morning hours") {
+          return "새벽시간 (12-5)";
+        } else if (daytime === "small hours") {
+          return "새벽 (1-3)";
+        } else if (daytime === "dawn" || daytime === "daybreak") {
+          return "해뜰력 (5-7)";
+        }
+      }
+      // console.log(CheckDayTime ());
+      // 48.
+      let ComputeInvestment = (balance, rate) => {
+        let tot = 0;
+        let i = 0;
+        while (tot < balance*2) {
+          tot = balance * (1+ rate/100) ** i;
+          i++;
+        }
+        console.log(`${rate}% 이자율로 ${i-1}년 후에 ${balance}원은 두배가 됩니다.(${tot}원)`);
+      }
+      //ComputeInvestment (25000,6);
+      //51.
+      function BigGugudan() {
+        console.log(`\t\t\tMultiplication Table`);
+        console.log(`\t\t1\t2\t3\t4\t5\t6\t7\t8\t9`);
+        console.log(`-----------------------------------------`);
+        console.log(`1 |\t\t1\t2\t3\t4\t5\t6\t7\t8\t9`);
+        console.log(`2 |\t\t2\t4\t6\t8\t10\t12\t14\t16\t18`);
+        console.log(`3 |\t\t3\t6\t9\t12\t15\t18\t21\t24\t27`);
+        console.log(`4 |\t\t4\t8\t12\t16\t20\t24\t28\t32\t36`);
+        console.log(`5 |\t\t5\t10\t15\t20\t25\t30\t35\t40\t45`);
+        console.log(`6 |\t\t6\t12\t18\t24\t30\t36\t42\t48\t54`);
+        console.log(`7 |\t\t7\t14\t21\t28\t35\t42\t49\t56\t63`);
+        console.log(`8 |\t\t8\t16\t24\t32\t40\t48\t56\t64\t72`);
+        console.log(`9 |\t\t9\t18\t27\t36\t45\t54\t63\t72\t81`);
+      }
+      //BigGugudan ();
+      //53.
+      let CalrendarV1 = (year) => {
+        function getDayOfWeek(year, month, day) {
+          const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+          if (month < 3) {
+            year--;
+            month += 12;
+          }
+          const weekDay = (day + Math.floor((13 * (month + 1)) / 5) + year + Math.floor(year / 4) - Math.floor(year / 100) + Math.floor(year / 400) + 6) % 7;
+          return weekDay;
+        }
+        let calrendar = getDayOfWeek(year,1,1);
+        let result = ``
+        result += `1\t`
+        if (calrendar !== 0) {
+          for (let i = 1; i <= calrendar; i++) {
+            result = `\t` + result;
+          }
+        }
+        switch (calrendar) {
+          default:
+            for (let j = 2; j <= 31; j++) {
+              if ((j + calrendar) % 7 !== 0) {
+                result += `${j}\t`;
+              } else if ((j + calrendar) % 7 === 0) {
+                result += `${j}\n `;
+              }
+            }
+            break;
+          case 6:
+            result = result + `\n `;
+            for (let j = 2; j <= 31; j++) {
+              if ((j - 1) % 7 !== 0) {
+                result += `${j}\t`;
+              } else if ((j - 1) % 7 === 0) {
+                result += `${j}\n `;
+              }
+            }
+            break;
+        }
+        document.write(`<pre>
+\t\t    January ${year}
+----------------------------------------------------
+ Sun\tMon \tTue \tWed \tThu \tFri \tSat\n ${result}
+</pre>`)
+      }
+      for (let i = 2005; i < 2026; i++) {
+        CalrendarV1(i);
+      }
+      //49.
+      function GreatDivider() {
+        let list1 = [];
+        let n1 = Number(prompt("정수1을 입력하세요"));
+        let i = 2;
+        while (i <= n1) {
+          while (n1 % i === 0) {
+            list1.push(i);
+            n1 /= i;
+          }
+          i++;
+        }
+        console.log(list1);
+      }
+    </script>
+  </body>
 </html>

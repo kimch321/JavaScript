@@ -6,10 +6,14 @@
 </head>
 <body>
 <SCRIPT>
-    function isEnglish(str) {
-        return /^[a-zA-Z]+$/.test(str);
-    }
-    console.log(isEnglish('str'));
+    let map = new Map();
+    map.set("name", "John");
+    map.set("age", 30);
+    map.set("gender", "male");
+
+    console.log(map.get("name"));
+    map.forEach((value, key) => console.log(key, value));
+
 </SCRIPT>
 </body>
 </html>

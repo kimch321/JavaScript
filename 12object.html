@@ -161,10 +161,8 @@
       console.clear()
       // 1 ~ 45 사이의 정수 중 중복하지 않은 6개 숫자 출력
       let prizeNumber = new Set;
-      let i = 0;
       while (prizeNumber.size !== 6) {
         prizeNumber.add(Math.floor(Math.random() * (45 - 1 + 1)) + 1)
-        i++
       }
       for (let val of prizeNumber) {
         console.log(val);
@@ -182,34 +180,71 @@
       // 성적처리결과를 출력함
 
       let SungJuk = {};
-      SungJuk.name=(prompt('이름을 입력하세요.'));
-      SungJuk.kor=Number((prompt('국어점수를 입력하세요.')));
-      SungJuk.eng=Number((prompt('영어점수를 입력하세요.')));
-      SungJuk.math=Number((prompt('수학점수를 입력하세요.')));
-      SungJuk.computeSungJuk = function computeSungJuk () {
-        let tot = this.kor+this.eng+this.math;
-        let avg = Math.floor(tot/3);
-        let grade = '';
-        switch(avg/10) {
+      SungJuk.name='김';
+      SungJuk.kor=80;
+      SungJuk.eng=80;
+      SungJuk.math=80;
+      SungJuk.computeSungJuk = function () {
+        SungJuk.tot = this.kor+this.eng+this.math;
+        SungJuk.avg = Math.floor(this.tot/3);
+        SungJuk.grade = '';
+        switch(this.avg/10) {
           case 10: case 9:
-            grade = '수';
+            this.grade = '수';
             break;
           case 8:
-            grade = '우';
+            this.grade = '우';
             break;
           case 7:
-            grade = '미';
+            this.grade = '미';
             break;
           case 6:
-            grade = '양';
+            this.grade = '양';
             break;
           default:
-            grade = '가';
+            this.grade = '가';
             break;
         }
-        return console.log(`${SungJuk.name}의 총점은 ${tot}점이고 평균은 ${avg}점이며, 등급은 ${grade}입니다.`)
       }
-      SungJuk.computeSungJuk();
+      SungJuk.showSungJuk = function () {
+        this.computeSungJuk();
+        console.log(`${this.name}의 총점은 ${this.tot}점이고 평균은 ${this.avg}점이며, 등급은 ${this.grade}입니다.`)
+      }
+      SungJuk.showSungJuk();
+    </script>
+    <script>
+      let SungJuk2 = {};
+      SungJuk2.name='는';
+      SungJuk2.kor=90;
+      SungJuk2.eng=90;
+      SungJuk2.math=90;
+      computeSungJuk2 = function computeSungJuk(SungJuk2) {
+        SungJuk2.tot = SungJuk2.kor+SungJuk2.eng+SungJuk2.math;
+        SungJuk2.avg = Math.floor(SungJuk2.tot/3);
+        SungJuk2.grade = '';
+        switch(SungJuk2.avg/10) {
+          case 10: case 9:
+            this.grade = '수';
+            break;
+          case 8:
+            this.grade = '우';
+            break;
+          case 7:
+            this.grade = '미';
+            break;
+          case 6:
+            this.grade = '양';
+            break;
+          default:
+            this.grade = '가';
+            break;
+        }
+      }
+      showSungJuk2 = (SungJuk2) => {
+        computeSungJuk2(SungJuk2);
+        console.log(`${SungJuk2.name}의 총점은 ${SungJuk2.tot}점이고 평균은 ${SungJuk2.avg}점이며, 등급은 ${SungJuk2.grade}입니다.`)
+      }
+      showSungJuk2(SungJuk2);
     </script>
   </body>
 </html>

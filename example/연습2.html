@@ -6,8 +6,23 @@
 </head>
 <body>
 <script>
-  let ex = [1,2,3,4,5];
-  console.log(ex);
+    class User {
+        name = "John";
+        surname = "Smith";
+        get fullName() {
+            return `${this.name} ${this.surname}`;
+        }
+        set fullName(value) {
+            [this.name, this.surname] = value.split(" ");
+        }
+    }
+    let user = new User;
+    // 주어진 값을 사용해 set fullName이 실행됩니다.
+    user.fullName = "Alice Special"
+
+    console.log(user.fullName); // Alice Special
+    console.log(user.name); // Alice
+    console.log(user.surname); // Special
 </script>
 </body>
 </html>

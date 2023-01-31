@@ -1,10 +1,324 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 클래스</title>
+      <script src="js/hello.js"></script>
+  </head>
+  <body>
+    <h1>자바스크립트 클래스</h1>
+    <p>개요</p>
+    <p>OOP는 객체를 기반으로 프로그램을 설계하는 방식을 의미</p>
+    <p>
+      프로그램을 단순히 데이터(변수)와 처리방법(함수)으로 나누는 것 보다 하나의
+      객체에 모두 담아두고, 이들의 상호작용으로 프로그래밍 하는 방식을 의미함
+    </p>
+    <p>OOP에서 객체를 생성하기 위한 가장 기본적인 요소는 클래스임</p>
+    <h2>클래스</h2>
+    <p>
+      특정 객체(붕어빵)를 생성하기 위해 변수와 메서드를 정의하는 일종의
+      틀(붕어빵 틀)
+    </p>
+    <p>객체를 정의하기 위한 상태(변수)와 행위(메서드)로 구성</p>
+    <pre>
+  class 클래스명 {
+   변수들...
+   constructor() {} // 생성자
+   setter/getter
+   메서드() {}
+</pre
+    >
+    <p>생성자 : 클래스내 멤버변수에 값을 초기화하는 특수한 함수</p>
+    <script>
+        class Hello {
+            // 맴버변수 선언 x
+            // this = {}; // 시스템에 의해 자동 생성
+            constructor(msg) {
+                this.msg=msg;
+            } // 생성자
+            sayHello() {
+                document.write(`Hello, ${this.msg}<br>`);
+            }
+        }
 
-</body>
+        let say1 = new Hello('Java');
+        say1.sayHello();
+        let say2 = new Hello('HTML5');
+        say2.sayHello();
+        let say3 = new Hello('CSS3');
+        say3.sayHello();
+    </script>
+
+    <script>
+        //case 1: 아이디, 비번, 이름, 이메일을
+        // 저장하기 위한 변수 선언하고 적절한 값으로 초기화하세요.
+        const userInfo = {
+            id:'cnd',
+            pawd:'cnd123',
+            name:'김',
+            email:'cnd@naver.com',
+        }
+    </script>
+    <script>
+        //case 2: 아이디, 비번, 이름, 이메일을
+        // 저장하기 위한 변수 선언하고 적절한 값으로 초기화하세요.
+        class Userinfo {
+            constructor(id,pawd,name,email) {
+                this.id = id;
+                this.pawd = pawd;
+                this.name = name;
+                this.email = email;
+            }
+        }
+        let user =new Userinfo('cnd','cnd123','김','cnd@naver.com');
+    </script>
+    <script>
+        // 생성자를 사용하지 않고
+        // 객체의 값을 초기화한다면?
+        user = new Userinfo();
+        user.id = 'cnd';
+        user.pawd = 'cnd123';
+        user.name = '김';
+        user.email = 'cnd@naver.com';
+        document.write(user.id, user.pawd);
+    </script>
+    <script>
+        class Userinfo2 {
+            _id = '123'; // protected 속성으로 선언
+            #pawd = '123'; // priviate 속성으로 선언
+        }
+        user = new Userinfo2();
+        console.log(user.id);
+        console.log(user.pawd);
+        // protected 속성으로 선언된 변수는
+        // 클래스 외부에서 접근할 수 없음
+        // 따라서, 값 조작도 불가(하지만 자바스크립트는 protected속성이 없다.)
+
+    </script>
+    <script>
+        class Userinfo4 {
+            id = '123';
+            #pawd = '123'; // priviate 속성으로 선언
+        }
+        user = new Userinfo4();
+        user.id = '456';
+        user.pawd = '789';
+        console.log(user.id);
+        console.log(user.pawd);
+
+        user.id='123';
+        user.pawd='123';
+        console.log(user.id);
+        console.log(user.pawd);
+    </script>
+    <h2>setter/getter</h2>
+    <p>캡슐화 : 객체에 선언된 변수나 함수가 아무렇게나 접근하지 못하게 은닉화</p>
+    <p>자바스크립트에서는 은닉화된 데이터에 접근하기 위해 setter/getter 함수를 사용함</p>
+    <p>하지만, 경우에 따라 setter 또는 getter만 만들어 쓰기도 함.</p>
+    <script>
+        class User4 {
+            #userid='';
+            #passwd='';
+
+            setUserid(userid) { // setter : setXxx
+                this.#userid = userid;
+            }
+
+            getUserid() { // getter : getXxx
+                return this.#userid;
+            }
+        }
+
+        user = new User4();
+        user.setUserid('abc987');
+        document.write(user.getUserid(), '<br>');
+    </script>
+    <script>
+        class User5 {
+            #userid='';
+            #passwd='';
+
+            set userid(userid) { // setter : setXxx
+                this.#userid = userid;
+            }
+
+            get userid() { // getter : getXxx
+                return this.#userid;
+            }
+        }
+
+        user = new User5();
+
+        document.write(`------------------------`);
+    </script>
+    <script>
+        class User6 {
+            #userid='';
+            #passwd='';
+
+            set userid(userid) { // setter : setXxx
+                if (userid.length < 6) {
+                    document.write('아이디가 너무 짧아요! <br>');
+                    return; // 함수내에서 특정시점에 실행 중단
+                }
+                this.#userid = userid;
+            }
+
+            get userid() { // getter : getXxx
+                return this.#userid;
+            }
+        }
+        user = new User6()
+        user.userid = '12345';
+        document.write('[', user.userid, '] <br>');
+        console.log(user.userid)
+    </script>
+  <h2>instanceof</h2>
+  <p>어떤 객체가 특정 클래스에 속하는지 여부를 알 수 있음</p>
+
+    <script>
+        // ex) 성적 처리프로그램 c3
+        // 이름, 국어, 영어, 수학을 입력받아
+        // 총점, 평균, 학점을 계산한 뒤 결과 출력
+
+        // 단, 학생이름과 성적들은 SungJuk이라는 클래스에 저장
+        // SungJukService 클래스에는 computeSungJuk
+        // showSungJuk이라는 함수를 포함하고 있음
+
+        // computeSungJuk은 총점, 평균, 학점을 처리함
+        // showSungJuk이라는 성적처리결과를 출력함
+
+        // class SungJuk {
+        //     tot = null;
+        //     avg = null;
+        //     grade = null;
+        //     constructor(name, kor, eng, math) {
+        //         this.name=name;
+        //         this.kor=kor;
+        //         this.eng=eng;
+        //         this.math=math;
+        //     }
+        //     computeSungJuk() {
+        //         this.tot = this.kor + this.eng+this.math;
+        //         this.avg = Math.floor(this.tot/3);
+        //         switch(this.avg/10) {
+        //             case 10: case 9:
+        //                 this.grade = '수';
+        //                 break;
+        //             case 8:
+        //                 this.grade = '우';
+        //                 break;
+        //             case 7:
+        //                 this.grade = '미';
+        //                 break;
+        //             case 6:
+        //                 this.grade = '양';
+        //                 break;
+        //             default:
+        //                 this.grade = '가';
+        //                 break;
+        //         }
+        //     }
+        //     showSungJuk () {
+        //         this.computeSungJuk()
+        //         console.log(`${this.name}의 총점은 ${this.tot}점이고 평균은 ${this.avg}점이며, 등급은 ${this.grade}입니다.`)
+        //     }
+        // }
+        // let student1 = new SungJuk('김', 80,80,80);
+        // student1.showSungJuk();
+        // console.log(student1.tot);
+        class SungJuk {   // 값만 다루는 클래스 : VO, DTO
+            #name = null;
+            #kor = null;
+            #eng = null;
+            #math = null;
+            #tot = null;
+            #avg = null;
+            #grd = null;
+            constructor(name, kor, eng, mat) {
+                this.#name = name;
+                this.#kor = kor;
+                this.#eng = eng;
+                this.#math = mat;
+            }
+            set name(name) {
+                this.#name = name;
+            }
+            get name() {
+                return this.#name;
+            }
+            set kor(kor) {
+                this.#kor = kor;
+            }
+            get kor() {
+                return this.#kor;
+            }
+            set eng(eng) {
+                this.#eng = eng;
+            }
+            get eng() {
+                return this.#eng;
+            }
+            set math(math) {
+                this.#math = math;
+            }
+            get math() {
+                return this.#math;
+            }
+            set tot(tot) {
+                this.#tot = tot;
+            }
+            get tot() {
+                return this.#tot;
+            }
+            set avg(avg) {
+                this.#avg = avg;
+            }
+            get avg() {
+                return this.#avg;
+            }
+            set grd(grd) {
+                this.#grd = grd;
+            }
+            get grd() {
+                return this.#grd;
+            }
+            toString() {
+                `${this.name}의 총점은 ${this.tot}점이고 평균은 ${this.avg}점이며, 등급은 ${this.grd}입니다.`
+            }
+        }
+        class SungJukService extends SungJuk
+        {
+            computeSungJuk () {
+                this.tot = this.kor + this.eng+this.math;
+                this.avg = Math.floor(this.tot/3);
+                switch(this.avg/10) {
+                    case 10: case 9:
+                        this.grd = '수';
+                        break;
+                    case 8:
+                        this.grd = '우';
+                        break;
+                    case 7:
+                        this.grd = '미';
+                        break;
+                    case 6:
+                        this.grd = '양';
+                        break;
+                    default:
+                        this.grd = '가';
+                        break;
+                }
+            }
+            showSungJuk () {
+                this.computeSungJuk()
+                console.log(`${this.name}의 총점은 ${this.tot}점이고 평균은 ${this.avg}점이며, 등급은 ${this.grd}입니다.`)
+            }
+        }
+        let stud1 = new SungJukService("수지", 80, 80, 80);
+        let stud2 = new SungJukService("지현", 55, 76, 80);
+        stud1.showSungJuk();
+        stud2.showSungJuk();
+    </script>
+  </body>
 </html>

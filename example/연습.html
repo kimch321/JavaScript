@@ -6,14 +6,29 @@
 </head>
 <body>
 <SCRIPT>
-    let map = new Map();
-    map.set("name", "John");
-    map.set("age", 30);
-    map.set("gender", "male");
-
-    console.log(map.get("name"));
-    map.forEach((value, key) => console.log(key, value));
-
+    class Person {
+        constructor(firstName, lastName, age) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+        }
+        get age() {
+             return this.age;
+        }
+        //
+        set age(value) {
+        if (value < 0) {
+        console.error(`age can not be negative`);
+        }
+        this.age = value/* < 0 ? 0 : value;*/
+        }
+        speak() {
+            console.log(`hello ${this.firstName + this.lastName}! you are ${this.age} years old!`)
+        }
+    }
+    const user1 = new Person('Steve', 'Job', -1);
+    user1.speak();
+    console.log(user1._age);
 </SCRIPT>
 </body>
 </html>

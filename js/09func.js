@@ -209,6 +209,54 @@ let CardCheck = () => {
     }
     return result;
 }
+// 문자열 내장함수 사용
+let CardCheck2 = () => {
+    let number = prompt("정수를 입력하세요.");
+    let result = "";
+    let num = number.slice(1);
+    if (number.at(0) === '4') {
+        result += "비자카드, ";
+        switch (num) {
+            case '04825':
+                result += "비씨카드";
+                break;
+            case '38676':
+                result += "신한카드";
+                break;
+            case '57973':
+                result += "국민은행";
+                break;
+        }
+    } else if (number.at(0) === '5') {
+        result += "마스타카드, Maestro, ";
+        switch (num) {
+            case '15594':
+                result += "신한카드";
+                break;
+            case '24353':
+                result += "외한카드";
+                break;
+            case '40926':
+                result += "국민은행";
+                break;
+        }
+    } else if (number.slice(0,2) === '35') {
+        result += "JCB카드, ";
+        num = number.slice(2);
+        switch (num) {
+            case '6317':
+                result += "NH농협카드";
+                break;
+            case '6901':
+                result += "신한카드";
+                break;
+            case '6912':
+                result += "KB국민카드";
+                break;
+        }
+    }
+    return result;
+}
 // 거리를 km단위로 입력받아 배송료를 계산하는 프로그램
 // 개선점.
 let CalcurateFee = () => {

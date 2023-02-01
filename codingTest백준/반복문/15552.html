@@ -5,9 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-첫 줄에 테스트케이스의 개수 T가 주어진다. T는 최대 1,000,000이다. 다음 T줄에는 각각 두 정수 A와 B가 주어진다. A와 B는 1 이상, 1,000 이하이다.
+첫 줄에 테스트케이스의 개수 T가 주어진다. T는 최대 1,000,000이다.
+다음 T줄에는 각각 두 정수 A와 B가 주어진다. A와 B는 1 이상, 1,000 이하이다.
 <script>
-
+let T = Math.floor(Math.random()*(1000000-1+1))+1
+let A = []
+let B = []
+for (let i = 0; i < T; i++) {
+    A.push(Math.floor(Math.random()*(1000-1+1))+1)
+    B.push(Math.floor(Math.random()*(1000-1+1))+1)
+}
+console.log(T);
+for (let i = 0; i < T; i++) {
+    console.log(`${A[i]}+${B[i]}`,A[i]+B[i]);
+}
 </script>
 </body>
 </html>

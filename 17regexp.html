@@ -126,8 +126,9 @@ let userid5 = 'a123XYZa123XYZa123XYZa123XYZ';
 </script>
 <h2>전화번호 패턴</h2>
 <p>국번은 2자리~3자리, 지역번호는 3자리~4자리, 나머지 번호는 4자리 숫자로 구성</p>
+<p>02,031-033,041~044,051~055,061~064</p>
 <script>
-  let re5 = /^(0[2-6][1-9])-([0-9]{3,4})-([0-9]{4})$/
+  let re5 = /^(0[2-6]?[1-5]?)-([0-9]{3,4})-([0-9]{4})$/
   let phoneNumber1 = '051-1234-1234'
   console.log(re5.exec(phoneNumber1));
   console.log(re5.test(phoneNumber1));

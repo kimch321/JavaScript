@@ -77,10 +77,10 @@
       // stringify함수만으로 객체 내용 출력
     </script>
     <script>
-        user = '{"userid":"abc123","passwd":"987xyz"}';
-        let obj = JSON.parse(user);
-        document.write(obj.userid, "<br>");
-        document.write(obj.passwd, "<br>");
+      user = '{"userid":"abc123","passwd":"987xyz"}';
+      let obj = JSON.parse(user);
+      document.write(obj.userid, "<br>");
+      document.write(obj.passwd, "<br>");
     </script>
     <script>
       // 넘겨받는 데이터가 2개 이상일 경우 배열로 전달받으면 된다.
@@ -88,57 +88,56 @@
       { "name":"지현", "grd":"미" },
       { "name":"수지", "grd":"가" }]`;
       obj = JSON.parse(sjs);
-      document.write(obj,'<br>');
+      document.write(obj, "<br>");
       // 배열객체를 구성하는 개별 요소에 접근하려면
       // 객체명[인덱스].속성명 형식으로 사용해야 함
-      document.write(obj[0].name, obj[0].grd,'<br>');
-      document.write(obj[2].name, obj[2].grd,'<br>');
+      document.write(obj[0].name, obj[0].grd, "<br>");
+      document.write(obj[2].name, obj[2].grd, "<br>");
     </script>
     <script>
       // users 배열에서 abc123라는 아이디가 존재하는지 확인
-      users= ['abc456','abc789','xyz123','abc123','xyz789']
-      for (let i = 0; i < users.length;i++) {
-        if(users[i] === 'abc123') {
-          console.log(`${i+1} - `,'abc123은 존재한다.')
+      users = ["abc456", "abc789", "xyz123", "abc123", "xyz789"];
+      for (let i = 0; i < users.length; i++) {
+        if (users[i] === "abc123") {
+          console.log(`${i + 1} - `, "abc123은 존재한다.");
         }
       }
     </script>
     <script>
       // 지현 학생의 학점 출력한다면? v1
-      for (let i = 0; i < obj.length; i++){
-        if(obj[i].name === '지현') {
-          document.write(`지현 : `,obj[i].grd,'<br>');
+      for (let i = 0; i < obj.length; i++) {
+        if (obj[i].name === "지현") {
+          document.write(`지현 : `, obj[i].grd, "<br>");
           break;
         }
       }
       let sj = null;
-      for (let i = 0; i < obj.length; i++){
-        if(obj[i].name === '지현') {
-          sj = obj[i]
+      for (let i = 0; i < obj.length; i++) {
+        if (obj[i].name === "지현") {
+          sj = obj[i];
           break;
         }
       }
-      document.write(`지현 : `,sj.grd,'<br>');
+      document.write(`지현 : `, sj.grd, "<br>");
       // 지현 학생의 학점 출력한다면? v2 // 배열로 받긴 했는데, 배열 안에 뭐가 들어 있는지 모를 경우.
       // filter 함수로 객체 탐색시
       // 대상 객체의 자료형은 객체여야 함!
       sjs = `{ "sjs" : [ { "name":"혜교", "grd":"수" },
                           { "name":"지현", "grd":"미" },
                           { "name":"수지", "grd":"가" } ] }`;
-      obj=JSON.parse(sjs);
+      obj = JSON.parse(sjs);
       // fillter : 대상 객체의 요소를 순회해 가면서
       // 콜백함수에 매게변수로 넘겨서 처리하는 함수
       // 결과는 배열형태로 넘겨 받음
       // filter, map, reduce : 고차함수
       // IOC 제어 역전. 이벤트가 발생하면 시스템이 값을 전달해 준다.
-      sj =obj.sjs.filter(function (s) {
+      sj = obj.sjs.filter(function (s) {
         // document.write(s.name,'<br>');
-        if (s.name ==='지현') return s;
+        if (s.name === "지현") return s;
       });
       //sj =obj.sjs.filter(s => (s.name == '지현'));
 
-      document.write('지현 : ', sj[0].grd, '<br>');
-
+      document.write("지현 : ", sj[0].grd, "<br>");
     </script>
   </body>
 </html>

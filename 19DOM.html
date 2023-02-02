@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 문서객체 모델 DOM</title>
+  </head>
+  <body>
+    <h1>자바스크립트 문서객체모델DOM</h1>
+    <h2>개요</h2>
+    <p>
+      텍스트파일로 만들어져 있는 html 문서를 브라우져에 시각적으로
+      나타내려면(렌더링) 먼저, 문서의 내용을 브라우저가 이해할 수 있는 형태로
+      메모리에 업로드하는 과정(파싱parsing)이 먼저 선행
+    </p>
+    <p>
+      파싱과정을 통해 메모리에 업로드된 결과는 DOM이라고 부르는데, 이것은
+      자바스크립트를 통해 문서의 내용에 접근해서 동적으로 변경할 수 있음
+    </p>
+    <p>
+      한편, DOM으로 구성된 문서내 객체들은 속성과 메서드로 구성된 DOM API를
+      이용해서 동적으로 웹페이지 내용을 변경할 수 있음
+    </p>
+    <h2>DOM tree</h2>
+    <p>
+      텍스트파일로 만들어져 있는 html 문서를 브라우져에 시각적으로
+      나타내려면(렌더링) 먼저, 문서의 내용을 브라우저가 이해할 수 있는 형태로
+      메모리에 업로드하는 과정(파싱parsing)이 먼저 선행
+    </p>
+    <p>
+      파싱과정을 통해 메모리에 업로드된 결과는 DOM이라고 부르는데, 이것은
+      자바스크립트를 통해 문서의 내용에 접근해서 동적으로 변경할 수 있음
+    </p>
+    <p>
+      한편, DOM으로 구성된 문서내 객체들은 속성과 메서드로 구성된 DOM API를
+      이용해서 동적으로 웹페이지 내용을 변경할 수 있음
+    </p>
+
+    <p>
+      document node : 트리의 최상위 요소 DOM tree에 접근하기 위한 진입점(entry
+      point)
+    </p>
+
+    <p>element node : HTML 상의 요소를 의미</p>
+
+    <p>attribute node : HTML상의 요소내 속성을 의미</p>
+
+    <p>text node : HTML의 요소 내 텍스트를 의미</p>
+
+    <div>(그림)DOM tree</div>
+
+    <h2>요소 찾기 : dom query</h2>
+    <p>요소를 선택할때는 태그명, 클래스명, id, name등을 사용할 수 있음</p>
+    <p>하나의 요소를 id 선택자로 찾으려면 document.getElementById를 사용</p>
+
+    <p>
+      하나의 요소를 class 선택자(태그명.클래스명, id,name)로 찾으려면
+      document.querySelector를 사용, 찾은 요소가 복수여도 하나만 선택. 바닐라 자바스크립트가 나오면서 생긴 기능.
+    </p>
+
+  <div>
+    <p id="one" class="first">시간은 금이라구 친구</p>
+    <p id="two" class="first">별의 영역이 광활하다는 건 놀라운 것이 아니다.
+      인류가 그것을 측정해낸 게 놀랍다</p>
+    <p id="three" class="third">어디서도 보지 못했던,
+      아무도 경험하지 못했던 완전히 새로운 게임</p>
+  </div>
+
+    <script>
+      // id가 one인 요소를 선택함
+      const one = document.getElementById('one');
+
+      // 선택한 요소에 css 스타일을 지정하려면
+      // 변수명.style.속성명 = 값 형식 사용
+      one.style.color = 'red';
+
+      // two라는 아이디를 가진 태그의 string콘텐츠를 진하게 표시
+      const two = document.getElementById('two');
+      two.style.fontWeight = 'bold';
+      // three라는 아이디를 가진 태그의 배경색을 검정, 글자색을 하양으로 바꾸기
+      const three = document.getElementById('three');
+      three.style.background = 'black';
+      three.style.color = 'white';
+    </script>
+  </body>
+</html>

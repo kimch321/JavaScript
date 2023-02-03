@@ -54,32 +54,320 @@
 
     <p>
       하나의 요소를 class 선택자(태그명.클래스명, id,name)로 찾으려면
-      document.querySelector를 사용, 찾은 요소가 복수여도 하나만 선택. 바닐라 자바스크립트가 나오면서 생긴 기능.
+      document.querySelector를 사용, 찾은 요소가 복수여도 하나만 선택. 바닐라
+      자바스크립트가 나오면서 생긴 기능.
     </p>
 
-  <div>
-    <p id="one" class="first">시간은 금이라구 친구</p>
-    <p id="two" class="first">별의 영역이 광활하다는 건 놀라운 것이 아니다.
-      인류가 그것을 측정해낸 게 놀랍다</p>
-    <p id="three" class="third">어디서도 보지 못했던,
-      아무도 경험하지 못했던 완전히 새로운 게임</p>
-  </div>
+    <div>
+      <p id="one" class="first">시간은 금이라구 친구</p>
+      <p id="two" class="first">
+        별의 영역이 광활하다는 건 놀라운 것이 아니다. 인류가 그것을 측정해낸 게
+        놀랍다
+      </p>
+      <p id="three" class="third">
+        어디서도 보지 못했던, 아무도 경험하지 못했던 완전히 새로운 게임
+      </p>
+    </div>
 
     <script>
       // id가 one인 요소를 선택함
-      const one = document.getElementById('one');
+      const one = document.getElementById("one");
 
       // 선택한 요소에 css 스타일을 지정하려면
       // 변수명.style.속성명 = 값 형식 사용
-      one.style.color = 'red';
+      one.style.color = "red";
 
       // two라는 아이디를 가진 태그의 string콘텐츠를 진하게 표시
-      const two = document.getElementById('two');
-      two.style.fontWeight = 'bold';
+      const two = document.getElementById("two");
+      two.style.fontWeight = "bold";
       // three라는 아이디를 가진 태그의 배경색을 검정, 글자색을 하양으로 바꾸기
-      const three = document.getElementById('three');
-      three.style.background = 'black';
-      three.style.color = 'white';
+      const three = document.getElementById("three");
+      three.style.background = "black";
+      three.style.color = "white";
+    </script>
+
+    <p>
+      여러 요소들을 태그이름으로 찾으려면 document.getElementsByTagName를 사용,
+      반환값은 HTMLCollection객체(유사배열)에 저장
+    </p>
+
+    <p>
+      여러 요소들을 클래스이름으로 찾으려면 document.getElementsByClassName를
+      사용, 반환값은 HTMLCollection객체(유사배열)에 저장
+    </p>
+
+    <p>
+      여러 요소들을 클래스 선택자로 찾으려면 document.querySelectorAll을 사용,
+      반환값은 NodeList객체(유사리스트)에 저장
+    </p>
+
+    <div>
+      <p class="two">시간은 금이라구 친구</p>
+      <p class="two">
+        별의 영역이 광활하다는 건 놀라운 것이 아니다. 인류가 그것을 측정해낸 게
+        놀랍다
+      </p>
+      <p class="fourth">
+        어디서도 보지 못했던, 아무도 경험하지 못했던 완전히 새로운 게임
+      </p>
+    </div>
+    <script>
+      // 문서제목 title 바꾸기
+      let title = document.getElementsByTagName("title");
+      console.log(title[0].innerText);
+      title[0].innerText = "Hello, DOM!!";
+
+      // 클래스이름이 two인 요소들의 스타일 변경
+      let p = document.getElementsByClassName("two");
+      console.log(p);
+      p[0].style.color = "blue";
+      p[1].style.backgroundColor = "yellow";
+    </script>
+
+    <div>
+      <p class="fifth">시간은 금이라구 친구</p>
+      <p class="fifth">
+        별의 영역이 광활하다는 건 놀라운 것이 아니다. 인류가 그것을 측정해낸 게
+        놀랍다
+      </p>
+      <p class="sixth">
+        어디서도 보지 못했던, 아무도 경험하지 못했던 완전히 새로운 게임
+      </p>
+    </div>
+
+    <script>
+      let fifth = document.querySelector(".fifth");
+      console.log(fifth);
+      fifth.style.textDecoration = "underline";
+      let fifth2 = document.querySelectorAll(".fifth");
+      console.log(fifth2);
+      //fifth.style.fontStyle = 'italic';               // 이렇게는 안됨.
+      fifth2[0].style.fontStyle = "italic";
+      fifth2[1].style.fontStyle = "italic";
+    </script>
+
+    <h2>속성 다루기</h2>
+    <p>특정 요소의 속성을 다룰려면 setAttribute를 사용</p>
+
+    <div><img id="img1" /></div>
+    <div><button type="button" onclick="showimg()">이미지</button></div>
+    <script>
+      let showimg = () => {
+        //src="img/smile.png" width="40%" height="40%"
+        let img = document.querySelector("#img1");
+        img.setAttribute("src", "img/smile.png");
+        img.setAttribute("width", "40%");
+        img.setAttribute("height", "40%");
+      };
+    </script>
+
+    <h2>새로운 요소 추가</h2>
+    <p>
+      태그이름을 인자로 전달해서 문서상에 새로운 요소를 생성하려면
+      createElement를 사용
+    </p>
+    <p>지정한 요소를 특정 요소의 자식 요소로 추가하려면 appendChild를 사용</p>
+    <p>텍스트 노드를 추가하려면 createTextNode를 사용</p>
+
+    <div id="img2"></div>
+    <div><button type="button" onclick="showimg2()">이미지</button></div>
+    <script>
+      let showimg2 = () => {
+        let div = document.querySelector("#img2");
+        console.log(div.firstChild); // null
+        let img = document.createElement("img");
+        div.appendChild(img);
+        img.setAttribute("src", "img/파파고.png");
+        console.log(div.firstChild); // null 아님
+      };
+    </script>
+
+    <h2>성적 결과 리스트</h2>
+    <div id="sj"></div>
+
+    <script>
+      // table, tr, th td,태그등을 이용해서
+      // 이름, 국어, 영어, 수학을 목록형태로 출력
+      let thData = ["이름", "국어", "영어", "수학"];
+      let sjData = ["지현", 98, 98, 98];
+
+      // 성적 테이블이 삽입될 위치 잡기
+      let sj = document.querySelector("#sj");
+
+      // 테이블 생성
+      let table = document.createElement("table");
+      table.setAttribute("border", "1px");
+      table.setAttribute("width", "500px");
+      table.setAttribute("cellspacing", "0");
+      table.setAttribute("cellpadding", "10");
+
+      // 테이블의 제목행 생성
+      // <tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th></tr>
+      // <tr><td></td><td></td><td></td><td></td></tr>
+      //let tr = document.createElement('tr');
+
+      // let th = document.createElement('th');
+      // let txt = document.createTextNode('이름');
+      // th.appendChild(txt);
+      // tr.appendChild(th);
+      // table.appendChild(tr);
+      //
+      // th = document.createElement('th');
+      // txt = document.createTextNode('국어');
+      // th.appendChild(txt);
+      // tr.appendChild(th);
+      // table.appendChild(tr);
+      //
+      // th = document.createElement('th');
+      // txt = document.createTextNode('영어');
+      // th.appendChild(txt);
+      // tr.appendChild(th);
+      // table.appendChild(tr);
+      //
+      // th = document.createElement('th');
+      // txt = document.createTextNode('수학');
+      // th.appendChild(txt);
+      // tr.appendChild(th);
+      // table.appendChild(tr);
+      for (let j = 1; j <= 2; j++) {
+        let tr = document.createElement("tr");
+        switch (j) {
+          case 1:
+            for (let i = 0; i < thData.length; i++) {
+              let th = document.createElement("th");
+              let txt = document.createTextNode(thData[i]);
+              th.appendChild(txt);
+              tr.appendChild(th);
+            }
+            table.appendChild(tr);
+            break;
+          case 2:
+            for (let val of sjData) {
+              let td = document.createElement("td");
+              td.setAttribute("aglign", "center");
+              let txt = document.createTextNode(val);
+              td.appendChild(txt);
+              tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+      }
+      // 생성한 요소 sj에 삽입
+      sj.appendChild(table);
+    </script>
+    <h2>시/구/동 검색</h2>
+  <div>
+    <select id="sido" onchange="getGugun()"></select>
+    <select id="gugun" onchange="getDong()"></select>
+    <select id="dong" onchange="getAddr()"></select>
+    <p id="myaddr"></p>
+  </div>
+    <script>
+      let sidoData = ['서울특별시','경기도','인천광역시','부산광역시','제주자치도'];
+      let gugunData = [
+        ['강남구', '서초구', '종로구', '송파구'],
+        ['과천시', '광명시', '성남분당구'],
+        ['연수구'],
+        ['부산진구'],
+        ['서귀포시']
+      ];
+      let dongData = [
+        [['논현동','대치동','삼성동'], ['반포동','방배동','양재동'],['광희동','명동','충무로'],['가락동','석촌동']],
+        [['과천동'],['광명동'],['대장동']],
+        [['연수동']],
+        [['개금동','가야동']],
+        [['강정동']]
+      ];
+      // 디폴트값 입력
+      // select 박스의 default 값을 만드는 함수
+      let addrTitle = (parent, title) => {
+        let option = document.createElement('option');
+        let txt = document.createTextNode(title);
+        option.appendChild(txt);
+        parent.appendChild(option);
+      }
+      let lastOptionDelete = (parent) => {
+        while(parent.firstChild) { // 시군구에 항목이 있다면
+          parent.removeChild(parent.firstChild);
+        }
+      }
+      let sido =document.querySelector('#sido');
+      addrTitle(sido,'- 광역시 -');
+      let gugun = document.querySelector('#gugun');
+      addrTitle(gugun,'- 시/군/구 -');
+      let dong = document.querySelector('#dong');
+      addrTitle(dong,'- 읍/면/동 -');
+
+      let getSido = () => {
+        for (let val of sidoData) {
+          let option = document.createElement('option');
+          let txt = document.createTextNode(val);
+          option.appendChild(txt);
+          sido.appendChild(option);
+        }
+      }
+      let getGugun = () => {
+        lastOptionDelete(dong);
+        addrTitle(dong,'- 읍/면/동 -');
+        // 기존 시군구 항목 제거
+        lastOptionDelete(gugun);
+        addrTitle(gugun,'- 시/군/구 -');
+        //선택한 시도로 시군구 항목 추가
+        if(sido.selectedIndex > 0)
+          for (let val of gugunData[sido.selectedIndex-1]) {
+          let option = document.createElement('option');
+          let txt = document.createTextNode(val);
+          option.appendChild(txt);
+          gugun.appendChild(option);
+        }
+      }
+      let getDong = () => {
+        lastOptionDelete(dong);
+        addrTitle(dong,'- 읍/면/동 -');
+        if(sido.selectedIndex > 0 && gugun.selectedIndex > 0)
+        for (let val of dongData[sido.selectedIndex-1][gugun.selectedIndex-1]) {
+          let option = document.createElement('option');
+          let txt = document.createTextNode(val);
+          option.appendChild(txt);
+          dong.appendChild(option);
+        }
+      }
+      let getAddr = () => {
+        if (dong.selectedIndex > 0) {
+          let result = `선택한 주소 :
+         ${sido.value} ${gugun.value} ${dong.value}`;
+
+          let myaddr = document.querySelector('#myaddr');
+          //myaddr.innerText= result;   // raw text 형태 출력
+          myaddr.innerHTML = result; // HTML처럼 출력.
+        }
+      };
+      getSido();
+    </script>
+
+    <h2>요소 내용 바꾸기</h2>
+    <p>innerHTML : html 요소내에 마크업을 포함한
+      무언가를 삽입/수정/제거할때 사용</p>
+    <p>textContent : 요소의 텍스트 컨텐츠를
+      가져오거나 변경할때 사용</p>
+
+  <div>
+    <span id="msg1">-1-</span>
+    <span id="msg2">-2-</span>
+    <p>게임목록</p>
+    <ul id="games"></ul>
+  </div>
+
+    <script>
+      let msg1 = document.querySelector('#msg1')
+      let msg2 = document.querySelector('#msg2')
+      let games = document.querySelector('#games')
+
+      msg1.innerHTML = '<p>Hello, World!!</p>';
+      msg2.textContent = '<p>Hello, World!!</p>';
+
+      games.innerHTML = '<li>디아블로</li>';
+      //games.textContent = '<li>디아블로</li>';
     </script>
   </body>
 </html>

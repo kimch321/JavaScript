@@ -5,101 +5,25 @@
     <title>Title</title>
   </head>
   <body>
-    <script>
-      class SungJuk {   // 값만 다루는 클래스 : VO, DTO
-        #name = null;
-        #kor = null;
-        #eng = null;
-        #math = null;
-        #tot = null;
-        #avg = null;
-        #grd = null;
-        constructor(name, kor, eng, mat) {
-          this.#name = name;
-          this.#kor = kor;
-          this.#eng = eng;
-          this.#math = mat;
-        }
-        set name(name) {
-          this.#name = name;
-        }
-        get name() {
-          return this.#name;
-        }
-        set kor(kor) {
-          this.#kor = kor;
-        }
-        get kor() {
-          return this.#kor;
-        }
-        set eng(eng) {
-          this.#eng = eng;
-        }
-        get eng() {
-          return this.#eng;
-        }
-        set math(math) {
-          this.#math = math;
-        }
-        get math() {
-          return this.#math;
-        }
-        set tot(tot) {
-          this.#tot = tot;
-        }
-        get tot() {
-          return this.#tot;
-        }
-        set avg(avg) {
-          this.#avg = avg;
-        }
-        get avg() {
-          return this.#avg;
-        }
-        set grd(grd) {
-          this.#grd = grd;
-        }
-        get grd() {
-          return this.#grd;
-        }
-        toString() {
+  <div>
+    <input type="text" id="userid">
+    <button type="button" id="checkbtn">아이디 중복검사</button>
+    <p id="msg2"></p>
+  </div>
 
+  <script>
+    const userid = document.querySelector('#userid');
+    const checkbtn = document.querySelector('#checkbtn');
+    const msg2 = document.querySelector('#msg2');
+      let req2 = new XMLHttpRequest();
+      req2.onreadystatechange = (e) => {
+        if (req2.readyState === 4 && req2.status === 200) {
+          msg2.textContent = req2.responseText;
         }
       }
-      class SungJukService extends SungJuk
-      {
-        computeSungJuk () {
-          this.tot = this.kor + this.eng+this.math;
-          this.avg = Math.floor(this.tot/3);
-          switch(this.avg/10) {
-            case 10: case 9:
-              this.grd = '수';
-              break;
-            case 8:
-              this.grd = '우';
-              break;
-            case 7:
-              this.grd = '미';
-              break;
-            case 6:
-              this.grd = '양';
-              break;
-            default:
-              this.grd = '가';
-              break;
-          }
-        }
-        showSungJuk () {
-          this.computeSungJuk()
-          console.log(`${this.name}의 총점은 ${this.tot}점이고 평균은 ${this.avg}점이며, 등급은 ${this.grd}입니다.`)
-        }
-      }
-      let stud1 = new SungJukService("수지", 80, 80, 80);
-      let stud2 = new SungJukService("지현", 55, 76, 80);
-      console.log(stud1.name);
-      console.log(stud2.name);
-      stud1.showSungJuk();
-      stud2.showSungJuk();
+      req2.open("get", "/server/member.txt");
+      req2.send();
+      console.log(req2.readyState, req2.status);
     </script>
   </body>
 </html>

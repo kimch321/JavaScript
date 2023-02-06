@@ -154,7 +154,7 @@
          else {
           frm2.method = 'post';
           frm2.action = "server/21join.jsp";
-          //e.stopPropagation();  // 버블링 방지
+          e.stopPropagation();  // 버블링 방지
           alert('이 글이 보이나요?')
           return true;
         }

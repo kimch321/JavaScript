@@ -227,6 +227,10 @@
     let joinbtn = document.querySelector('#joinbtn');
 
     let checkJoinfrm = () => { // 올바른 서식이 입력되지 않으면 '올바른 서식을 입력하세요' 올바른 서식을 입력하면 '올바른 서식입니다' or 경고메세지가 사라지게 한다.
+      warn1.textContent='';
+      warn2.textContent='';
+      warn3.textContent='';
+      warn4.textContent='';
       if (uid.value === '') {
         warn1.textContent = '아이디를 입력하세요!!';
         uid.focus();

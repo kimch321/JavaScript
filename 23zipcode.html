@@ -61,15 +61,19 @@
 
     // 1. 시도 출력
     let getSido = () => {
-        let req = new XMLHttpRequest();
-        req.onreadystatechange = () => {
-            if (req.readyState === 4 && req.status === 200) {
-                //console.log(req.responseText);
-                setSido(req.responseText);
-            }
-        }
-        req.open('get',url1);
-        req.send();
+        // let req = new XMLHttpRequest();
+        // req.onreadystatechange = () => {
+        //     if (req.readyState === 4 && req.status === 200) {
+        //         //console.log(req.responseText);
+        //         setSido(req.responseText);
+        //     }
+        // }
+        // req.open('get',url1);
+        // req.send();
+        // ajax promise인 fetch 함수로 변경
+        fetch(url1)
+            .then(response => response.text())
+            .then(text => setSido(text));
     }
 
 
@@ -84,6 +88,10 @@
         }
         req.open('get',url2+qry);
         req.send();
+
+        // fetch(url2+qry)
+        //     .then(response => response.text())
+        //     .then(text => setGugun(text));
     })
     // 2. 구군 출력
     const setGugun = (guguns) => {
@@ -105,14 +113,17 @@
     // 구군을 출력했을 때 처리
     gugun.addEventListener('change', () => {
         let qry = '?sido=' + sido.value + '&' + 'gugun=' + gugun.value;
-        let req = new XMLHttpRequest();
-        req.onreadystatechange = () => {
-            if (req.readyState === 4 && req.status === 200) {
-                setDong(req.responseText);
-            }
-        }
-        req.open('get',url3+qry);
-        req.send();
+        // let req = new XMLHttpRequest();
+        // req.onreadystatechange = () => {
+        //     if (req.readyState === 4 && req.status === 200) {
+        //         setDong(req.responseText);
+        //     }
+        // }
+        // req.open('get',url3+qry);
+        // req.send();
+        fetch(url3 + qry)
+            .then(response => response.text())
+            .then(text => setDong(text));
     })
     // 3. 동 출력
     const setDong = (dongs) => {
@@ -126,6 +137,10 @@
             makeopt(dong, col);
         }
     };
+
+    dong.addEventListener('change', () => {
+        console.log(`${sido.value} ${gugun.value} ${dong.value}`)
+    })
 
     // 코드 실행 - 실행 진입점 entry point, 시작점
     getSido();

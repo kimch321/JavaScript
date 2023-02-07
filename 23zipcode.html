@@ -46,7 +46,7 @@
 
     function setSido(sidos) {
         // 응답 데이터를 ,로 구분해서 배열에 저장
-        let cols = sidos.split(',');
+        let cols = sidos.trim().split(',');
         // 기본 option 요소 추가
         makeopt(sido, '- 광역시 -')
         makeopt(gugun, '- 시/군/구 -')
@@ -95,7 +95,7 @@
     })
     // 2. 구군 출력
     const setGugun = (guguns) => {
-        let cols = guguns.split(',');
+        let cols = guguns.trim().split(',');
         while(gugun.lastChild) {
             gugun.removeChild(gugun.lastChild);
         }
@@ -127,7 +127,7 @@
     })
     // 3. 동 출력
     const setDong = (dongs) => {
-        let cols = dongs.split(',');
+        let cols = dongs.trim().split(',');
         while(dong.lastChild) {
             dong.removeChild(dong.lastChild);
         }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    1. tomcat.apache.org에서 tomcat 서버를 다운로드하고
+    적당한 곳에서 압축해제해 둠<br>
+
+    2. webapps/ROOT에 sido.jsp, gugun.jsp, dong.jsp에
+    복사해 둠 (23zipcode.html도 마찬가지!)<br>
+
+    3. bin/startup.bat로 서버 시작해 둠<br>
+
+    4. http://127.0.0.1:8080/sido.jsp로 실행 확인<br>
+
+    5. 실습확인은 http://127.0.0.1:8080/23zipcode.html을 이용함<br>
+
+    6. 선택한 시도에 대한 구군 조회는 'gugun.jsp?sido=시/도이름' 로 함<br>
+
+    7. 선택한 시도와 구군에 대한 동 조회는
+    'dong.jsp?sido=시/도이름&gugun=구/군이름' 으로 함
+</p>
+<div>
+    <select id="sido"></select>
+    <select id="gugun"></select>
+    <select id="dong"></select>
+</div>
+<script>
+    let url1 = 'http://127.0.0.1:8080/server/sido.jsp';
+    let url2 = 'http://127.0.0.1:8080/server/gugun.jsp';
+    let url3 = 'http://127.0.0.1:8080/server/dong.jsp';
+
+    let sido = document.querySelector('#sido');
+    let gugun = document.querySelector('#gugun');
+    let dong = document.querySelector('#dong');
+
+    let makeopt = (elm, text) => {
+        let opt = document.createElement('option');
+        let txt = document.createTextNode(text);
+        opt.appendChild(txt);
+        elm.appendChild(opt);
+    }
+
+    function setSido(sidos) {
+        // 응답 데이터를 ,로 구분해서 배열에 저장
+        let cols = sidos.split(',');
+        // 기본 option 요소 추가
+        makeopt(sido, '- 광역시 -')
+        makeopt(gugun, '- 시/군/구 -')
+        makeopt(dong, '- 읍/면/동 -')
+
+        // 시도 option 요소 추가
+        for (let col of cols) {
+            if (col === '') continue;
+            makeopt(sido, col);
+        }
+    } // set sido
+
+    // 1. 시도 출력
+    let getSido = () => {
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = () => {
+            if (req.readyState === 4 && req.status === 200) {
+                //console.log(req.responseText);
+                setSido(req.responseText);
+            }
+        }
+        req.open('get',url1);
+        req.send();
+    }
+
+
+    // 시도를 선택했을 때 처리
+    sido.addEventListener('change',() => {
+        let qry = '?sido=' + sido.value;
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = () => {
+            if (req.readyState === 4 && req.status === 200) {
+                setGugun(req.responseText);
+            }
+        }
+        req.open('get',url2+qry);
+        req.send();
+    })
+    // 2. 구군 출력
+    const setGugun = (guguns) => {
+        let cols = guguns.split(',');
+        while(gugun.lastChild) {
+            gugun.removeChild(gugun.lastChild);
+        }
+        makeopt(gugun, '- 시/군/구 -')
+        while(dong.lastChild) {
+            dong.removeChild(dong.lastChild);
+        }
+        makeopt(dong, '- 읍/면/동 -')
+        for (let col of cols) {
+            if (col === '') continue;
+            makeopt(gugun, col);
+        }
+    };
+
+    // 구군을 출력했을 때 처리
+    gugun.addEventListener('change', () => {
+        let qry = '?sido=' + sido.value + '&' + 'gugun=' + gugun.value;
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = () => {
+            if (req.readyState === 4 && req.status === 200) {
+                setDong(req.responseText);
+            }
+        }
+        req.open('get',url3+qry);
+        req.send();
+    })
+    // 3. 동 출력
+    const setDong = (dongs) => {
+        let cols = dongs.split(',');
+        while(dong.lastChild) {
+            dong.removeChild(dong.lastChild);
+        }
+        makeopt(dong, '- 읍/면/동 -')
+        for (let col of cols) {
+            if (col === '') continue;
+            makeopt(dong, col);
+        }
+    };
+
+    // 코드 실행 - 실행 진입점 entry point, 시작점
+    getSido();
+</script>
+</body>
+</html>

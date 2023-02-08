@@ -6,27 +6,127 @@
 </head>
 <body>
 <SCRIPT>
-    class Person {
-        constructor(firstName, lastName, age) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.age = age;
+    let url1 = 'http://127.0.0.1:8080/server/sido.jsp';
+    let url2 = 'http://127.0.0.1:8080/server/gugun.jsp';
+    let url3 = 'http://127.0.0.1:8080/server/dong.jsp';
+
+    let sido = document.querySelector('#sido');
+    let gugun = document.querySelector('#gugun');
+    let dong = document.querySelector('#dong');
+
+    // 시군구를 선택하려면 변수명.jsp?변수명=값
+    // 두번 타고 들어가야하면  변수명.jsp?변수명a=값&변수명b=값
+    // 제대로 만든다면 질의문을 상당히 신경써서
+
+    let makeopt = (elm,text) =>{
+        // 기본 option 요소 추가 appendChild에서 연결이 잘되었는지 확인할 것
+        let opt = document.createElement('option');
+        let txt = document.createTextNode(text);
+        opt.appendChild(txt);
+        elm.appendChild(opt);
+    };
+
+    function setSido(sidos) {
+        //응답 데이터를 , 로 구분해서 배열에 저장
+        let cols = sidos.split(',');
+        cols.pop();
+
+        makeopt(sido,'-광역시-');
+        makeopt(gugun,'-시/군/구-');
+        makeopt(dong,'-읍/면/동-');
+
+        // 시도 option요소 추가
+        for (let col of cols) {
+            if (col == '') {continue;}
+            makeopt(sido,col)
         }
-        get age() {
-             return this._age;
+    }//setSido
+
+    //1. 시도출력
+    let getsido = () =>{
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = () =>{
+            if (req.readyState == 4 && req.status == 200) {
+                console.log(req.responseText)
+                setSido(req.responseText);
+            }
+        };
+        req.open('get',url1);
+        req.send();
+    };
+
+    //시도를 선택했을때 이벤트 처리
+    sido.addEventListener('change',() => {
+        let qry = '?sido=' + sido.value;
+
+        //선택한 시도가 '-광역시-'라면 함수 실행중지
+        if(sido.selectedIndex == 0) {return;}
+
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = () =>{
+            if (req.readyState == 4 && req.status == 200) {
+                console.log(req.responseText);
+                setGugun(req.responseText);
+            }
+        };
+        req.open('get',url2+qry);
+        req.send();
+    })
+
+
+    gugun.addEventListener('change',()=>{
+        let qry = '?sido=' + sido.value +'&gugun='+ gugun.value
+        if(gugun.selectedIndex == 0) {return;}
+
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = () =>{
+            if (req.readyState == 4 && req.status == 200) {
+                console.log(req.responseText);
+                setDong(req.responseText);
+            }
+        };
+        req.open('get',url3+qry);
+        req.send();
+    })
+
+    //2. 구군출력
+
+    let setGugun = (guguns) => {
+        let cols = guguns.split(',');
+        cols.pop();
+
+        while (gugun.lastChild) {
+            gugun.removeChild(gugun.lastChild)
         }
-        set age(value) {
-        if (value < 0) {
-        console.error(`age can not be negative`);
+
+        makeopt(gugun,'-시/군/구-');
+        // 시도 option요소 추가
+        for (let col of cols) {
+            if (col == '') {
+                continue;
+            }
+            makeopt(gugun, col)
         }
-        this._age = value/* < 0 ? 0 : value;*/
-        }
-        speak() {
-            console.log(`hello ${this.firstName + this.lastName}! you are ${this.age} years old!`)
-        }
+
     }
-    const user1 = new Person('Steve', 'Job', -1);
-    user1.speak();
+    //3. 동출력
+    const setDong = (dongs) => {
+        let cols = dongs.split(',');
+        cols.pop();
+
+        while (dong.lastChild) {
+            dong.removeChild(dong.lastChild)
+        }
+
+        makeopt(dong,'-읍/면/동-');
+        // 시도 option요소 추가
+        for (let col of cols) {
+            if (col == '') {
+                continue;
+            }
+            makeopt(dong, col)
+        }
+    };
 </SCRIPT>
 <script>
 

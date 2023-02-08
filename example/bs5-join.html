@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../css/bs5/bootstrap.min.css" rel="stylesheet" />
+    <title>bootstrap5 회원가입</title>
+    <style>
+      .lWapper {
+        margin: 0 30px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="hWapper" class="lWapper" >
+        <div id="subhWapper" style="display:flex; justify-content: space-between; margin: 0 0 10px 0">
+        <div id="title">
+          <p class="h2">Lorem Ipsum</p>
+        </div>
+        <!--// title-->
+        <div id="hButton" style="vertical-align: bottom;">
+          <form> <!--form태그를 아래로 정렬해야 한다.-->
+            <button type="button" class="btn btn-warning">로그인</button>
+            <button type="button" class="btn btn-danger">회원가입</button>
+          </form>
+        </div>
+        <!--// hButton-->
+        </div>
+        <!--// subhWapper-->
+      </div>
+      <!--// hwapper-->
+    </header>
+    <nav>
+      <div id="nWapper" class="lWapper">
+        <div class="subnWapper">
+        <ul style="list-style: none; margin: 0; padding:0;" class="row">
+          <li class="col-2">프로젝트 소개</li>
+          <li class="col-2">회원가입</li>
+          <li class="col-2">게시판</li>
+          <li class="col-2">자료실</li>
+          <li class="col-2">갤러리</li>
+          <li class="col-2">관리자</li>
+        </ul>
+        </div>
+        <!--// subnWapper-->
+      </div>
+    </nav>
+    <main>
+      <div id="mWapper" class="lWapper"></div>
+    </main>
+    <footer>
+      <div id="fWapper" class="lWapper"></div>
+    </footer>
+    <script src="../js/bs5/bootstrap.bundle.min.js"></script>
+    <script src="../example/bs5-join.js"></script>
+  </body>
+</html>

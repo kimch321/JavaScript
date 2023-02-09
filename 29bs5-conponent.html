@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>bootstrap5 컴포넌트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/bs5/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>bootstrap5 컴포넌트</h1>
+    <h2>경고 대화상자</h2>
+
+    <div class="alert alert-primary">Hello, World!!</div>
+
+    <h2>Breadcrumb</h2>
+    <p>웹 사이트내에서 사용자의 위치를 알려주는 네비시스템을 의미</p>
+
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <button type="button" class="btn btn-light" disabled>Home</button>
+        </li>
+        <li class="breadcrumb-item">
+          <button type="button" class="btn btn-light" disabled>Games</button>
+        </li>
+        <li class="breadcrumb-item active">
+          <button type="button" class="btn btn-success" disabled>
+            Playstation 5
+          </button>
+        </li>
+      </ol>
+    </nav>
+
+    <h2>Autoplaying carousels without controls</h2>
+
+    <div
+      id="Autoplaying carousels"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/1.png" class="d-block w-100" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/2.png" class="d-block w-100" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/3.png" class="d-block w-100" />
+        </div>
+      </div>
+    </div>
+
+    <h2>modal</h2>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hello">
+      모달창 띄우기
+    </button>
+
+    <!-- 모달창 -->
+    <div id="hello" class="modal fade" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"></div>
+          <div class="modal-body">Hello, World!!</div>
+          <div class="modal-footer"></div>
+          <button type="button" class="btn btn-success"
+                  data-bs-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>navbar</h2>
+
+    <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand">Navbar</a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+          <a href="#" class="nav-link active">Home</a>
+          <a href="#" class="nav-link">Join</a>
+          <a href="#" class="nav-link">Login</a>
+          <a href="#" class="nav-link">Board</a>
+          <a href="#" class="nav-link">Gallery</a>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-md">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand">Navbar</a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbardown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div id="navbardown" class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Join</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Board</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Gallery</a></li>
+        </ul>
+      </div>
+      </div>
+    </nav>
+
+    <h2>pagination</h2>
+
+    <nav>
+      <ul class="pagination">
+        <li class="page-item disabled"><a href="#" class="page-link">이전</a></li>
+        <li class="page-item"><a href="#" class="page-link">1</a></li>
+        <li class="page-item"><a href="#" class="page-link">2</a></li>
+        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+        <li class="page-item"><a href="#" class="page-link">4</a></li>
+        <li class="page-item"><a href="#" class="page-link">5</a></li>
+        <li class="page-item"><a href="#" class="page-link">6</a></li>
+        <li class="page-item"><a href="#" class="page-link">7</a></li>
+        <li class="page-item"><a href="#" class="page-link">8</a></li>
+        <li class="page-item"><a href="#" class="page-link">9</a></li>
+        <li class="page-item"><a href="#" class="page-link">10</a></li>
+        <li class="page-item"><a href="#" class="page-link">다음</a></li>
+      </ul>
+    </nav>
+
+    <script src="js/bs5/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
